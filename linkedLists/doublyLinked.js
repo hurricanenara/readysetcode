@@ -63,6 +63,15 @@ class DoublyLinkedList {
         }
     }
 
+    removeTail() {
+        const removedTail = this.tail;
+        if (!removedTail) return;
+        this.tail = removedTail.getPreviousNode();
+        if (this.tail) this.tail.setNextNode(null);
+        if (removedTail === this.head) this.removeHead();
+        return removedTail.data;
+    }
+
     removeHead() {
         const removedHead = this.head;
         if (!removedHead) return;
@@ -70,6 +79,19 @@ class DoublyLinkedList {
         if (this.head) this.head.setPreviousNode(null);
         if (removedHead === this.tail) this.removeTail();
         return removedHead.data;
+    }
+
+    removeByData(data) {
+        let nodeToRemove;
+        let currentNode = this.head;
+        while (currentNode) {
+            if (currentNode.data === data) {
+                nodeToRemove = currentNode;
+                break;
+            }
+            currentNode = currentNode.getNextNode();
+        }
+        if (!nodeToRemove) return null;
     }
 
     printList() {
