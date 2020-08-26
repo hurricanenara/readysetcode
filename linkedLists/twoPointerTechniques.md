@@ -107,3 +107,33 @@ Final Tick
 1  2  3  4  5  6  7  null
 
 As long as we always move the fast pointer first and check to see that it is not null before moving it and the slow pointer again, we’ll exit iteration at the proper time and have a reference to the middle node with the slow pointer.
+
+### Implementation
+
+##### Instructions
+Complete the findMiddle() function and return the middle node of linkedList. You can assume that the list has no cycles.
+
+Return the right-weighted middle for even-length lists. For example, in a list of 4 elements, return the element at index 2 (which would be the element 3).
+
+Use generateTestLinkedList(length) to generate linked lists with data from 1 -> 2 -> .. -> length to test out your function. For instance, generateTestLinkedList(4) results in 1 -> 2 -> 3 -> 4.
+
+##### Code
+
+const findMiddle = linkedList => {
+  let fastPointer = linkedList.head;
+  let slowPointer = linkedList.head;
+
+  while (fastPointer) {
+    fastPointer = fastPointer.next;
+    if (fastPointer) {
+      fastPointer = fastPointer.next;
+      slowPointer = slowPointer.next;
+    }
+  }
+
+  return slowPointer;
+};
+
+console.log(findMiddle(generateTestLinkedList(7)));
+
+module.exports = findMiddle;
