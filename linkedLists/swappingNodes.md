@@ -10,3 +10,42 @@ If node2Prev is null, set the list’s head to node1
 Otherwise, set node2Prev‘s next node to node1
 Set node1‘s next node to node2‘s next node
 Set node2‘s next node to node1‘s next node
+
+## Finding the Matching and Preceding Nodes
+
+Let’s look at what implementing steps 1 and 2 looks like. In order to swap the two nodes, we must first find them. We also need to keep track of the nodes that precede them so that we can properly reset their pointers. (We will use the Node class’s .getNextNode() method in order to access the next node.)
+
+We will start by setting node1 equal to the head of the list, and then creating a while loop that runs while node1 isn’t null. Inside the loop, we will check if node1‘s data matches data1. If so, we break out of the loop as we have found the correct node. If there is no match, we update node1Prev to be node1 and move node1 to its next node:
+
+function swapNodes(list, data1, data2) {
+  let node1 = list.head;
+  let node2 = list.head;
+  let node1Prev = null;
+  let node2Prev = null;
+
+  while (node1 !== null) {
+    if (node1.data === data1) {
+      break;
+    }
+    node1Prev = node1;
+    node1 = node1.getNextNode();
+  }
+}
+
+## Updating the Preceding Nodes' Pointers
+Our next step is to set node1Prev and node2Prev‘s next nodes, starting with node1Prev. We will start by checking if node1Prev is null. If it is, then the node1 is the head of the list, and so we will update the head to be node2. If node1Prev isn’t null, then we set its next node to node2:
+
+// Still inside the swapNodes() function
+if (node1Prev === null) {
+  list.head = node2;
+} else {
+  node1Prev.setNextNode(node2);
+}
+After this step, we have finished updating the pointers that point to our swapped nodes. The next step will be to update the pointers from them.
+
+## Updating the Nodes’ Next Pointers
+The last step is to update the pointers from node1 and node2. This is relatively simple, and mirrors a swapping function for an array in that we will use a temporary variable.
+
+let temp = node1.getNextNode();
+node1.setNextNode(node2.getNextNode());
+node2.setNextNode(temp);
