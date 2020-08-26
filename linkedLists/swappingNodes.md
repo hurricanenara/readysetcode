@@ -1,3 +1,5 @@
+# Swapping Nodes
+
 Since singly linked lists only have pointers from each node to its next node, swapping two nodes in the list isn’t as easy as doing so in an array (where you have access to the indices). You not only have to find the elements, but also reset the pointers around them to maintain the integrity of the list. This means keeping track of the two nodes to be swapped as well as the nodes preceding them.
 
 Given an input of a linked list, data1, and data2, the general steps for doing so is as follows:
@@ -49,3 +51,86 @@ The last step is to update the pointers from node1 and node2. This is relatively
 let temp = node1.getNextNode();
 node1.setNextNode(node2.getNextNode());
 node2.setNextNode(temp);
+
+## Edge Cases
+
+We have completed the basic swap algorithm in JavaScript! However, we haven’t accounted for some base cases. What if there is no matching node for one of the inputs? The current swapNodes() function will not run because we will try to access the next node of a node that is null. (Remember that our initial while loop only breaks if the matching node is found. Otherwise, it runs until the node is null.) Thankfully this has a quick fix. We can put in an if that checks if either node1 or node2 is null. If they are, we can print a statement that explains a match was not found, and return to end the method. We can put this right after the while loops that iterate through the list to find the matching nodes:
+
+if (node1 === null || node2 === null) {
+  console.log('Swap not possible - one or more element is not in the list')
+  return;
+}
+The last edge case is if the two nodes to be swapped are the same. While our current implementation will run without error, there’s no point in executing the whole function if it isn’t necessary. We can add a brief check at the beginning of the function that checks if the data1 is the same as data2, and then return to end the function:
+
+if (data1 === data2) {
+  console.log('Elements are the same - no swap needed.');
+  return;
+}
+
+## The Finished Function
+
+const testList = new LinkedList();
+for (let i = 0; i <= 10; i++) {
+  testList.addToTail(i);
+}
+
+testList.printList();
+swapNodes(testList, 2, 5);
+testList.printList();
+
+function swapNodes(list, data1, data2) {
+  console.log(`Swapping ${data1} and ${data2}:`);
+  
+  let node1Prev = null;
+  let node2Prev = null;
+  let node1 = list.head;
+  let node2 = list.head;
+
+  if (data1 === data2) {
+    console.log('Elements are the same - no swap to be made');
+    return;
+  }
+  
+  while (node1 !== null) {
+    if (node1.data === data1) { 
+      break;
+    }
+    node1Prev = node1;
+    node1 = node1.getNextNode();
+  }
+  
+  while (node2 !== null) {
+    if (node2.data === data2) {
+      break;
+    }
+    node2Prev = node2;
+    node2 = node2.getNextNode();
+  }
+  
+  if (node1 === null || node2 === null) {
+    console.log('Swap not possible - one or more element is not in the list');
+    return;
+  }
+
+  if (node1Prev === null) {
+    list.head = node2;
+  } else {
+    node1Prev.setNextNode(node2);
+  }
+
+  if (node2Prev === null) { 
+    list.head = node1;
+  } else {
+node2Prev.setNextNode(node1);
+  }
+  
+  let temp = node1.getNextNode();
+  node1.setNextNode(node2.getNextNode());
+  node2.setNextNode(temp); 
+}
+
+## Time and Space Complexity
+
+The worst case for time complexity in swapNodes() is if both while loops must iterate all the way through to the end (either if there are no matching nodes, or if the matching node is the at the tail). This means that it has a linear big O runtime of O(n), since each while loop has a O(n) runtime, and constants are dropped.
+
+There are four new variables created in the function regardless of the input, which means that it has a constant space complexity of O(1).
