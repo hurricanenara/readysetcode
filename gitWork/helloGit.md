@@ -19,3 +19,11 @@ git add filename
 Imagine that we type another line in scene-1.txt. Since the file is tracked, we can check the differences between the working directory and the staging area with:
 
 git diff filename
+
+
+
+##### git log
+Often with Git, you’ll need to refer back to an earlier version of a project. Commits are stored chronologically in the repository and can be viewed with:
+
+git log
+git log --oneline
