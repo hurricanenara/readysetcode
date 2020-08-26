@@ -137,3 +137,26 @@ const findMiddle = linkedList => {
 console.log(findMiddle(generateTestLinkedList(7)));
 
 module.exports = findMiddle;
+
+## Alternative Solution
+
+const findMiddleAlternate = linkedList => {
+  let count = 0;
+  let fast = linkedList.head;
+  let slow = linkedList.head;
+
+  while(fast !== null) {
+    fast = fast.getNextNode();
+    if (count % 2 !== 0) {
+      slow = slow.getNextNode();
+    }
+    count++;
+  }
+  return slow;
+}
+
+## Conclusions
+Many linked list problems can be solved with the two-pointer technique. If it seems like a linked list problem requires keeping track of multiple positions or creating other data representations (such as using an array), consider whether two pointers iterating in parallel or at different speeds could help solve the problem efficiently. We won’t cover full solutions to these here, but variations on the two-pointer technique can be used to:
+
+* Detect a cycle in a linked list
+* Rotate a linked list by k places
