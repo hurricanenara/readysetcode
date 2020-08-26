@@ -126,19 +126,19 @@ const subway = new DoublyLinkedList();
 subway.addToHead('TimesSquare');
 subway.addToHead('GrandCentral');
 subway.addToHead('CentralPark');
-subway.printList();
+// subway.printList();
 
 subway.addToTail('PennStation');
 subway.addToTail('WallStreet');
 subway.addToTail('BrooklynBridge');
-subway.printList();
+// subway.printList();
 
 subway.removeHead();
 subway.removeTail();
-subway.printList();
+// subway.printList();
 
 subway.removeByData('TimesSquare');
-subway.printList();
+// subway.printList();
 
 // Traversing a singly linked list to find nth last node
 
@@ -147,17 +147,43 @@ const nthLastNode = (linkedList, n) => {
     let tailSeeker = linkedList.head;
     let count = 0;
     while (tailSeeker) {
+        debugger
         tailSeeker = tailSeeker.next;
         if (count >= n) {
+            debugger
             if (!current) {
+                debugger
                 current = linkedList.head;
             }
             current = current.next;
         }
+        debugger
         count++
     }
     return current;
 }
 
-Nodelist = [8, 7, 6, 5, 4, 3, 2, 1]
-nthLastNode(Nodelist, 3)
+//debugger method
+
+const nthLastNode = (linkedList, n) => {
+    let current = null;
+    let tailSeeker = linkedList.head;
+    let count = 0;
+    while (tailSeeker) {
+        console.log("tailseeker:", tailSeeker.next)
+        tailSeeker = tailSeeker.next;
+        if (count >= n) {
+            if (!current) {
+                current = linkedList.head;
+                // console.log('current', current)
+            }
+            current = current.next;
+        }
+        console.log("iteration", count)
+        console.log('current', current)
+        count++
+    }
+    return current;
+};
+
+console.log(nthLastNode(testLinkedList, 4));
