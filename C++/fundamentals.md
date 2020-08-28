@@ -71,3 +71,28 @@ Some common link-time errors:
 
 * Using a function that was never defined (more on this later)
 * Writing Main() instead of main()
+
+### Run-time Errors
+If our program has no compile-time errors and no link-time errors, it’ll run. This is where the fun really starts.
+
+Errors which happen during program execution (run-time) after successful compilation are called run-time errors. Run-time errors occur when a program with no compile-time errors and link-time errors asks the computer to do something that the computer is unable to reliably do.
+
+Some common run-time errors:
+
+Division by zero also known as division error. These types of error are hard to find as the compiler doesn’t point to the line at which the error occurs.
+Trying to open a file that doesn’t exist
+There is no way for the compiler to know about these kinds of errors when the program is compiled.
+
+### Logic Errors
+Once we have removed the compile-time errors, link-time errors, and run-time errors, the program runs successfully. But sometimes, the program doesn’t do what we want it to do or no output is produced. Hmmm…
+
+These types of errors which provide incorrect output, but appears to be error-free, are called logical errors. These are one of the most common errors that happen to beginners and also usually the most difficult to find and eliminate.
+
+Logical errors solely depend on the logical thinking of the programmer. Your job now is to figure out why the program didn’t do what you wanted it to do.
+
+Some common logic errors:
+
+* Program logic is flawed
+* Some “silly” mistake in an if statement or a for/while loop
+Note: Logic errors don’t have error messages. Sometimes, programmers use a process called test-driven development (TDD), a way to give logic errors error messages and save yourself a lot of headaches!
+
