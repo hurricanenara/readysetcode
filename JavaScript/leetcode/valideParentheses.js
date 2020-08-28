@@ -1,7 +1,7 @@
 
 const isValid = (s) => { // "([)]", "{[]}"
     const dictionary = { "(": ")", "[": "]", "{": "}" }
-    let stack = [s[0]];
+    let stack = [s[0]];1
 
     if (s === "") return true;
 
@@ -22,5 +22,3 @@ console.log(isValid("()[]{}"));
 console.log(isValid("(]"));
 console.log(isValid("([)]"));
 console.log(isValid("{[]}"));
-
-
