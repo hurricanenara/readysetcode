@@ -17,6 +17,23 @@ const svg = d3.select('.canvas')
         .attr('transform', `translate(0, ${graphHeight})`);
     const yAxisGroup = graph.append('g');
 
+    // scales
+
+    //update function
+    const update = data => {
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.orders)])
+            .range([graphHeight, 0]);
+
+        // band scale
+        const x = d3.scaleBand()
+            .domain(data.map(item => item.name))
+            .range([0, 500])
+            .paddingInner(0.2)
+            .paddingOuter(0.2);
+
+    }
+
 db.collection('dishes').get().then(res => {
 
     let data = [];
@@ -25,23 +42,6 @@ db.collection('dishes').get().then(res => {
     });
 
     // y will be a function you can pass value to
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.orders)])
-        .range([graphHeight, 0]);
-
-    // const min = d3.min(data, d => d.orders);
-    // const max = d3.max(data, d => d.orders);
-    // const extent = d3.extent(data, d => d.orders);
-    // console.log(min)
-    // console.log(max)
-    // console.log(extent)
-
-    // band scale
-    const x = d3.scaleBand()
-        .domain(data.map(item => item.name))
-        .range([0, 500])
-        .paddingInner(0.2)
-        .paddingOuter(0.2);
 
     // console.log(x("veg curry"));
     // console.log(x("veg pasta"));
@@ -50,33 +50,51 @@ db.collection('dishes').get().then(res => {
     // join the data to rects
     const rects = graph.selectAll('rect')
         .data(data)
+    console.log(rects)
+    // rects.attr('width', x.bandwidth)
+    //     .attr('height', d => graphHeight - y(d.orders))
+    //     .attr('fill', 'orange')
+    //     .attr('x', d => x(d.name))
+    //     .attr('y', d => y(d.orders)); // inverting the graphs (to rotate graph 180 deg)
 
-    rects.attr('width', x.bandwidth)
-        .attr('height', d => graphHeight - y(d.orders))
-        .attr('fill', 'orange')
-        .attr('x', d => x(d.name))
-        .attr('y', d => y(d.orders)); // inverting the graphs (to rotate graph 180 deg)
+    // //append the enter selection to the DOM
+    // rects.enter()
+    //     .append('rect')
+    //     .attr('width', x.bandwidth)
+    //     .attr('height', d => graphHeight - y(d.orders))
+    //     .attr('fill', 'orange')
+    //     .attr('x', d => x(d.name))
+    //     .attr('y', d => y(d.orders)); // inverting the graphs
 
-    //append the enter selection to the DOM
-    rects.enter()
-        .append('rect')
-        .attr('width', x.bandwidth)
-        .attr('height', d => graphHeight - y(d.orders))
-        .attr('fill', 'orange')
-        .attr('x', d => x(d.name))
-        .attr('y', d => y(d.orders)); // inverting the graphs
+    // //create and call the axes
+    // const xAxis = d3.axisBottom(x);
+    // const yAxis = d3.axisLeft(y)
+    //     .ticks(3)
+    //     .tickFormat(d => `${d} orders`);
 
-    //create and call the axes
-    const xAxis = d3.axisBottom(x);
-    const yAxis = d3.axisLeft(y)
-        .ticks(3)
-        .tickFormat(d => `${d} orders`);
+    // xAxisGroup.call(xAxis);
+    // yAxisGroup.call(yAxis);
 
-    xAxisGroup.call(xAxis);
-    yAxisGroup.call(yAxis);
+    // xAxisGroup.selectAll('text') // anchored/rotated by middle of text
+    //     .attr('transform', 'rotate(-40)')
+    //     .attr('text-anchor', 'end') // so cahnge text anchor to end to avoid overlapping of bar and text
+    //     .attr('fill', 'pink')
 
-    xAxisGroup.selectAll('text') // anchored/rotated by middle of text
-        .attr('transform', 'rotate(-40)')
-        .attr('text-anchor', 'end') // so cahnge text anchor to end to avoid overlapping of bar and text
-        .attr('fill', 'pink')
+    const update = data => {
+
+        // 1. update scales (domains) if they rely on our data
+        y.domain([0, d3.max(data, d.orders)]);
+
+        // 2. join updated data to elements
+        const rects = graph.selectAll('rect').data(data);
+
+        // 3. remove unwanted (if any) shapes using the exit selection
+        rects.exit().remove();
+
+        // 4. update current shapes in the dom
+        rects.attr(...etc);
+
+        // 5. apend the enter selection to the dom
+        rects.enter().append('rect').attr(...etc);
+    }
 })
