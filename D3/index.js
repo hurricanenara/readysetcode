@@ -1,11 +1,26 @@
-const data = [
-    {width: 200, height: 100, fill: 'purple'}
-];
-
 const svg = d3.select('svg');
 
-const rect = svg.select('rect')
-    .data(data)
-    .attr('width', (d, i, n) => d.width)
-    .attr('height', d => d.height )
-    .attr('fill', d => d.fill )
+d3.json('menu.json').then(data => {
+
+    // y will be a function you can pass value to
+    const y = d3.scaleLinear()
+        .domain([0, 1000])
+        .range([0, 500]);
+
+    // join the data to rects
+    const rects = svg.selectAll('rect')
+        .data(data)
+
+    rects.attr('width', 50)
+        .attr('height', d => y(d.orders))
+        .attr('fill', 'orange')
+        .attr('x', (d, i) => i * 70);
+
+    //append the enter selection to the DOM
+    rects.enter()
+        .append('rect')
+        .attr('width', 50)
+        .attr('height', d => y(d.orders))
+        .attr('fill', 'orange')
+        .attr('x', (d, i) => i * 70);
+})
