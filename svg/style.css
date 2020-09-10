@@ -1,0 +1,17 @@
+svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.path {
+	stroke-dasharray: 6000;
+	stroke-dashoffset: 6000;
+	transition: all 5s;
+}
+
+svg:hover .path {
+	stroke-dashoffset: 0;
+}
