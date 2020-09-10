@@ -17,25 +17,38 @@ svg .st0 {
 	stroke: #fafafa;
 	stroke-dasharray: 800;
 	stroke-dashoffset: 800;
-	animation: 4s circle-outline forwards;
+	opacity: 0;
+	animation: 4s circle-outline infinite forwards;
 }
 
 svg path {
 	fill: none;
 	stroke: #fafafa;
 	stroke-width: 3px;
+	stroke-dasharray: 400;
+	stroke-dashoffset: 400;
+	opacity: 0;
+	animation: 4s text-outline infinite forwards;
 }
-
-
-
-
-
 
 @keyframes circle-outline {
 	from {
 		stroke-dashoffset: 800;
+		opacity: 0;
 	}
 	to {
 		stroke-dashoffset: 0;
+		opacity: 1;
+	}
+}
+
+@keyframes text-outline {
+	from { 
+		stroke-dashoffset: 400;
+		opacity: 0;
+	}
+	to { 
+		stroke-dashoffset: 0; 
+		opacity: 1;
 	}
 }
