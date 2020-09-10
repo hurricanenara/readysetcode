@@ -9,7 +9,7 @@ svg {
 .path {
 	stroke-dasharray: 6000;
 	stroke-dashoffset: 6000;
-	transition: all 5s;
+	transition: all 4s;
 }
 
 svg:hover .path {
