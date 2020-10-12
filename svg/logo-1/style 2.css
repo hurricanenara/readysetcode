@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(138, 81, 112);
+}
+
+#logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fill-draw 3s ease 500ms forwards;
+}
+
+#logo path {
+    /* fill: none; */
+    stroke: white;
+    stroke-width: 2;
+}
+
+#logo path:nth-child(1) {
+    stroke-dasharray: 757.4;
+    stroke-dashoffset: 757.4;
+    animation: outline-draw 1s ease forwards;
+}
+#logo path:nth-child(2) {
+    stroke-dasharray: 564.5;
+    stroke-dashoffset: 564.5;
+    animation: outline-draw 1s ease forwards 550ms;
+}
+#logo path:nth-child(3) {
+    stroke-dasharray: 290.9;
+    stroke-dashoffset: 290.9;
+    animation: outline-draw 1s ease forwards 400ms;
+}
+#logo path:nth-child(4) {
+    stroke-dasharray: 564.5;
+    stroke-dashoffset: 564.5;
+    animation: outline-draw 800ms ease forwards 400ms;
+    
+}
+#logo path:nth-child(5) {
+    stroke-dasharray: 411.2;
+    stroke-dashoffset: 411.2;
+    animation: outline-draw 800ms ease forwards 600ms;
+}
+#logo path:nth-child(6) {
+    stroke-dasharray: 547.1;
+    stroke-dashoffset: 547.1;
+    animation: outline-draw 800ms ease forwards 950ms;
+}
+#logo path:nth-child(7) {
+    stroke-dasharray: 547.1;
+    stroke-dashoffset: 547.1;
+    animation: outline-draw 800ms ease forwards 950ms;
+}
+
+@keyframes outline-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill-draw {
+    from {
+        fill: transparent;
+    }
+    to {
+        fill: white;
+    }
+}
