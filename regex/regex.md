@@ -100,7 +100,6 @@ Without the anchor tags, the regex Monkeys: my mortal enemy will match the text 
 Once again, as with all other metacharacters, in order to match the symbols ^ and $, you need to use the escape character in your regex. The regex My spider monkey has \$10\^6 in the bank will completely match the text My spider monkey has $10^6 in the bank.
 
 ## Review
-Do you feel those regular expression superpowers coursing through your body? Do you just want to scream ah+ really loud? Awesome! You are now ready to take these skills and use them out in the wild. Before beginning your adventures, let’s review what we’ve learned.
 
 * Regular expressions are special sequences of characters that describe a pattern of text that is to be matched
 * We can use literals to match the exact characters that we desire
