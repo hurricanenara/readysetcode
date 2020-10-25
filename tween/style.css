@@ -1,0 +1,21 @@
+.section {
+    border:  2px solid blue;
+    padding: 30px;
+    margin: 50px;
+    min-height: 50vh;
+}
+
+.box{
+  width: 50%;
+  height: 40px;
+  background-color: orange;
+}
+
+.box-2{ background-color: lightblue; }
+.box-3{ background-color: lightgreen; }
+
+.space{
+  min-height: 80vh;
+  width: 30px;
+  background-color: lightgray;
+}
