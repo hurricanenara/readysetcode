@@ -61,7 +61,13 @@ class LinkedList {
   }
 
   findNodeRecursively(data, currentNode = this.head) {
-    
+    if (!currentNode) {
+      return  null;
+    } else if (data === currentNode.data) {
+      return currentNode;
+    } else {
+      return this.findNodeRecursively(data, currentNode.getNextNode());
+    }
   }
 
 }
@@ -83,3 +89,5 @@ function findNodeIteratively(data) {
   }
   return null;
 }
+
+//method to find node recursively will work without the recursive case IF the node to be found is the head of the linked list, otherwise the function will return undefined without the recursive case/step.
