@@ -31,8 +31,6 @@ function anagrams(stringA, stringB) {
         return true;
     }
 
-    // if able, clean up each string, turn into array, sort, then compare the two cleaned strings
-
     // for (let char in objA) {
     //     if (objA[char] === objB[char]) {
     //         delete objB[char];
