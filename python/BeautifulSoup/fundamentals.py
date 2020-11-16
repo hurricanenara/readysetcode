@@ -2,6 +2,7 @@
 # Requests
 
 import requests
+from bs4 import BeautifulSoup
 
 webpage_response = requests.get("https://content.codecademy.com/courses/beautifulsoup/shellter.html")
 
@@ -12,7 +13,7 @@ print(webpage)
 # BS4 Object
 
 # import requests
-from bs4 import BeautifulSoup
+
 
 webpage_response = requests.get('https://content.codecademy.com/courses/beautifulsoup/shellter.html')
 
