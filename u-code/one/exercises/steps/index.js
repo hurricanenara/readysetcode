@@ -18,7 +18,12 @@
 //       '####'
 
 function steps(n) {
-    
+    let initial = " ".repeat(n);
+    for (let i = 1; i <= n; i++) {
+        let numOfSpace = " ".repeat(i);
+        let numOfPound = "#".repeat(i);
+        console.log(initial.replace(numOfSpace, numOfPound));
+    }
 }
 
 module.exports = steps;
