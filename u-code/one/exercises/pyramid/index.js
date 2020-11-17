@@ -14,6 +14,26 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+    let initial = " ".repeat(n);
+    for (let i = 1; i <= n; i++) {
+        let numOfSpace = " ".repeat(i);
+        let numOfPound = "#".repeat(i);
+        let right = initial.replace(numOfSpace, numOfPound);
+        let left = right.split("").reverse().join("");
+        console.log(left + right.slice(1))
+    }
+}
+
+//using padStart and padEnd
+// function pyramid(n) {
+//   let step = 0;
+//   let hashStr = "#";
+//   while (step < n) {
+//     console.log(hashStr.padStart(n + step, " ").padEnd(2 * n - 1, " "));
+//     hashStr += "##";
+//     step++;
+//   }
+// }
 
 module.exports = pyramid;
