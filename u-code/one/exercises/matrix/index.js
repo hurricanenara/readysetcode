@@ -52,6 +52,6 @@ function matrix(n) {
     return grid;
 }
 
-console.log(matrix(4));
+// console.log(matrix(4));
 
 module.exports = matrix;
