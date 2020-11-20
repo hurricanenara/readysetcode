@@ -4,6 +4,9 @@
 
 class Node {}
 
-class LinkedList {}
+class LinkedList {
+
+    
+}
 
 module.exports = { Node, LinkedList };
