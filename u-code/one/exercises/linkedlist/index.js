@@ -113,10 +113,16 @@ class LinkedList {
             }
 
         }
-
-
         // const nodeToInsert = new Node(data, this.getAt(index + 1));
         // prevNode.next = nodeToInsert;
+    }
+
+    forEach(cb) {
+        let currentNode = this.head;
+        while (currentNode) {
+            cb.call(this, currentNode);
+            currentNode = currentNode.next;
+        }
     }
 
 }
