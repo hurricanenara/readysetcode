@@ -100,8 +100,23 @@ class LinkedList {
         }
     }
 
-    insertAt(index) {
-        
+    insertAt(data, index) {
+        if (!this.head || index === 0) {
+            this.insertFirst(data);
+        } else if (index > this.size()) {
+            this.insertLast(data);
+        } else {
+
+            const prevNode = this.getAt(index - 1);
+            if (prevNode) {
+                prevNode.next = new Node(data, prevNode.next) || new Node(data);
+            }
+
+        }
+
+
+        // const nodeToInsert = new Node(data, this.getAt(index + 1));
+        // prevNode.next = nodeToInsert;
     }
 
 }
