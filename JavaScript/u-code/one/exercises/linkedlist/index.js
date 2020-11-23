@@ -120,7 +120,8 @@ class LinkedList {
     forEach(cb) {
         let currentNode = this.head;
         while (currentNode) {
-            cb.call(this, currentNode);
+            // cb.call(this, currentNode);
+            cb(currentNode);
             currentNode = currentNode.next;
         }
     }
