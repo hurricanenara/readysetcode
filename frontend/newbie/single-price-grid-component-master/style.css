@@ -1,0 +1,123 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    font-size: 16px;
+    font-family: "Karla";
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);;
+}
+
+.card {
+    margin: 0 auto;
+    margin-top: 80px;
+    height: 75%;
+    width: 80%;
+    border-radius: 1rem;
+}
+
+.top-header-container {
+    height: 45%;
+    background-color: white;
+    display: flex;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.top-header-section {
+    margin: 40px;
+    align-items: center;
+}
+
+.top-header-container .title {
+    margin-bottom: 30px;
+}
+
+.top-header-container h2 {
+    color: hsl(179, 62%, 43%);
+}
+
+.top-header-container h3 {
+    color: hsl(71, 73%, 54%);
+}
+
+.intro-description div {
+    color: hsl(201, 14%, 76%);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.bottom-container {
+    height: 55%;
+    display: flex;
+    color: white;
+}
+
+.section {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-left {
+    background-color: hsl(179, 62%, 43%);
+    margin: 0 auto;
+    border-bottom-left-radius: 1rem;
+}
+
+.price {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 13px;
+}
+
+.price span {
+    font-size: .95rem;
+    color: hsl(179, 36%, 73%);
+    vertical-align: middle;
+}
+
+.per-day {
+    margin-bottom: 35px;
+}
+
+.text-container button {
+    outline: none;
+    border: none;
+    padding: 20px;
+    width: 100%;
+    background-color: #d4fc79;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bottom-right {
+    background-color: hsl(179, 50%, 52%);
+    border-bottom-right-radius: 1rem;
+}
+
+.text-container {
+    width: 80%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+    margin: 4px;
+    color: #b7ecdb;
+    font-weight: 500;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+}
+
