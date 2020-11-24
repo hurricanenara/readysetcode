@@ -81,11 +81,23 @@ class Node {
     }
 
     // shorter solution passing the next (left or right) node
-    contains(data, node = this) {
-        if (!node) return null;
-        if (node.data === data) return node;
-        if (data > node.data) return this.contains(data, node.right);
-        if (data < node.data) return this.contains(data, node.left);
+    // contains(data, node = this) {
+    //     if (!node) return null;
+    //     if (node.data === data) return node;
+    //     if (data > node.data) return this.contains(data, node.right);
+    //     if (data < node.data) return this.contains(data, node.left);
+    // }
+
+    // another way
+    contains(data) {
+        if (this.data === data) return this;
+        if (data < this. data && this.left) {
+            return this.left.contains(data);
+        } else if (data > this.data && this.right) {
+            return this.right.contains(data);
+        } else {
+            return null;
+        }
     }
 
     //my attempt without recursion
