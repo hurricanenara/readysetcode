@@ -6,17 +6,14 @@ test('Node is a constructor', () => {
 
 test('Node can insert correctly', () => {
   const node = new Node(10);
-  // console.log(node);
+
   node.insert(5);
   node.insert(15);
   node.insert(17);
-  console.log(node);
 
   expect(node.left.data).toEqual(5);
   expect(node.right.data).toEqual(15);
-  console.log(node);
   expect(node.right.right.data).toEqual(17);
-  console.log(node);
 });
 
 test('Contains returns node with the same data', () => {
