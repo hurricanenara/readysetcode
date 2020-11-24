@@ -11,6 +11,17 @@
 // 4       5
 // Answer: [1, 3, 2]
 
-function levelWidth(root) {}
+function levelWidth(root) {
+    let cache = [root];
+    const counters = [];
+
+    while (cache.length) {
+        counters.push(cache.length);
+        const newCache = [];
+        cache.forEach(node => newCache.push(...node.children));
+        cache = newCache;
+    }
+    return counters;
+}
 
 module.exports = levelWidth;
