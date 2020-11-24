@@ -11,17 +11,49 @@
 // 4       5
 // Answer: [1, 3, 2]
 
-function levelWidth(root) {
-    let cache = [root];
-    const counters = [];
+// function levelWidth(root) {
+//     let cache = [root];
+//     const counters = [];
 
-    while (cache.length) {
-        counters.push(cache.length);
-        const newCache = [];
-        cache.forEach(node => newCache.push(...node.children));
-        cache = newCache;
+//     while (cache.length) {
+//         counters.push(cache.length);
+//         const newCache = [];
+//         cache.forEach(node => newCache.push(...node.children));
+//         cache = newCache;
+//     }
+//     return counters;
+// }
+
+// function levelWidth(root) {
+//   const array = [1];
+//   let nextLevel = root.children;
+ 
+//   while (nextLevel.length) {
+//     array.push(nextLevel.length);
+//     nextLevel = nextLevel
+//       .reduce((acc, node) => [...acc, ...node.children], []);
+//   }
+ 
+//   return array;
+// }
+
+// using a stopper
+function levelWidth(root) {
+    const arr = [root, 's'];
+    const widths = [0];
+
+    while (arr.length > 1) {
+        const node = arr.shift();
+
+        if (node === 's') {
+            widths.push(0);
+            arr.push('s');
+        } else {
+            arr.push(...node.children);
+            widths[widths.length - 1]++;
+        }
     }
-    return counters;
+    return widths;
 }
 
 module.exports = levelWidth;
