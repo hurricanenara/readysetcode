@@ -81,9 +81,12 @@ function idInvalidCardCompanies(arrays) {
                 console.log("Company not found");
                 break;
         }
-        return Object.keys(obj);
     })
+    return Object.keys(obj);
+    // return obj;
 }
+
+console.log(idInvalidCardCompanies([invalid1, invalid2]));
 
 
 
