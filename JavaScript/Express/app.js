@@ -6,6 +6,10 @@ const bodyParser = require("body-parser");
 // app.use(bodyParser.json());
 app.use(express.static('public'));
 
+const dreamTeamRouter = express.Router();
+
+app.use('/dreamteam', dreamTeamRouter);
+
 const dreamTeam = {
     1: {
         name: "Nara",
@@ -29,11 +33,11 @@ app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
 });
 
-app.get('/dreamteam', (req, res, next) => {
+dreamTeamRouter.get('/', (req, res, next) => {
     res.send(dreamTeam);
 });
 
-app.get('/dreamteam/:id', (req, res, next) => {
+dreamTeamRouter.get('/:id', (req, res, next) => {
     const { id } = req.params;
     if (dreamTeam[id]) {
         res.send(dreamTeam[id]);
@@ -42,17 +46,26 @@ app.get('/dreamteam/:id', (req, res, next) => {
     }
 });
 
-app.put('/dreamteam/:id', (req, res, next) => {
+dreamTeamRouter.put('/:id', (req, res, next) => {
     const { id } = req.params;
     const teamUpdate = req.query;
     dreamTeam[id] = teamUpdate;
     res.send(dreamTeam[id]);
 });
 
-app.post('/dreamteam', (req, res, next) => {
+dreamTeamRouter.post('/', (req, res, next) => {
     const ids = Object.keys(dreamTeam);
     const newId = +ids[ids.length - 1] + 1;
     const newMember = req.query;
     dreamTeam[newId] = newMember;
     res.send(req.query);
+});
+
+dreamTeamRouter.delete('/:id', (req, res, next) => {
+    const { id } = req.params;
+    if (dreamTeam.hasOwnProperty(id)) {
+        delete dreamTeam[id];
+    } else {
+        res.status(404).send(`Team member with id ${id} does not exist.`)
+    }
 });
