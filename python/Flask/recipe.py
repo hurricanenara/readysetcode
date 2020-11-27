@@ -29,3 +29,7 @@ def recipe(recipe_id):
     return render_template("recipe.html", template_recipe=recipes[recipe_id],
                            template_ingredients=ingredients[recipe_id],
                            template_instructions=instructions[recipe_id])
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
