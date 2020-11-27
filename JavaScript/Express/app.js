@@ -1,17 +1,26 @@
 const express = require('express');
 const app = express();
+const bodyParser = require("body-parser");
+
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 app.use(express.static('public'));
 
 const dreamTeam = {
-    nara: {
+    1: {
         name: "Nara",
         dream: "BIG",
         color: "hologram",
     },
-    py: {
+    2: {
         name: "PY",
         dream: "HUGE",
         color: "blue",
+    },
+    3: {
+        name: "Rando",
+        dream: "Any",
+        color: "transparent"
     }
 }
 
@@ -24,16 +33,26 @@ app.get('/dreamteam', (req, res, next) => {
     res.send(dreamTeam);
 });
 
-app.get('/dreamteam/:name', (req, res, next) => {
-    const { name } = req.params;
-    if (dreamTeam[name]) {
-        res.send(dreamTeam[name]);
+app.get('/dreamteam/:id', (req, res, next) => {
+    const { id } = req.params;
+    if (dreamTeam[id]) {
+        res.send(dreamTeam[id]);
     } else {
-        res.status(404).send("Name not found");
+        res.status(404).send("Id not found");
     }
 });
 
-app.put('/dreamteam/:name', (req, res, next) => {
-    
-})
+app.put('/dreamteam/:id', (req, res, next) => {
+    const { id } = req.params;
+    const teamUpdate = req.query;
+    dreamTeam[id] = teamUpdate;
+    res.send(dreamTeam[id]);
+});
 
+app.post('/dreamteam', (req, res, next) => {
+    const ids = Object.keys(dreamTeam);
+    const newId = +ids[ids.length - 1] + 1;
+    const newMember = req.query;
+    dreamTeam[newId] = newMember;
+    res.send(req.query);
+});
