@@ -19,6 +19,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+
 @app.route("/recipe/<int:recipe_id>")
 def recipe(recipe_id):
     return render_template("recipe.html", template_recipe=recipes[recipe_id],
