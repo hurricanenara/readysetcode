@@ -1,6 +1,13 @@
 import './App.css';
 import React from 'react';
 import config from './config.json';
+import sendMessage from './test';
+require('dotenv').config();
+
+const accountSid = "ACea6a293aff07b005c805d5ab83a2a108";
+const authToken = "7c30c422453bfab2ae584a0bcb77e4d9";
+const client = require('twilio')(accountSid, authToken);
+
 const fetch = require('node-fetch');
 
 class App extends React.Component {
@@ -9,15 +16,15 @@ class App extends React.Component {
     super();
     this.state = {
       isLoading: true,
-      user: null,
       product: null,
     }
+    // this.alertMe = this.alertMe.bind(this);
   }
 
-  fetchRandomUser = async() => {
+  fetchAvailability = async() => {
     await fetch(`https://api.bestbuy.com/v1/products(upc=711719541028)?apiKey=${config["apiKeyBB"]}&sort=inStoreAvailability.asc&show=inStoreAvailability,onlineAvailability,inStoreAvailabilityUpdateDate,onlineAvailabilityUpdateDate,name&format=json`)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         return res.json();
       })
       .then(data => {
@@ -31,13 +38,23 @@ class App extends React.Component {
       })
   }
 
+  alertMe(client) {
+    client.messages
+      .create({
+        body: "Test1!",
+        from: '+12056548194',
+        to: '+16469460875'
+      })
+      .then(message => console.log(message.sid));
+  }
+
   componentDidMount() {
     // setInterval(this.fetchRandomUser, 3000);
-    this.fetchRandomUser();
+    this.fetchAvailability()
   }
 
   render() {
-    const { isLoading, user, product } = this.state;
+    const { isLoading, product } = this.state;
     if (isLoading) {
       return <div>Loading...</div>
     }
@@ -47,6 +64,10 @@ class App extends React.Component {
           <header>
             {product.name}
           </header>
+          {
+            // (product.inStoreAvailability || product.onlineAvailability) ? this.alertMe() : null
+            // !product.inStoreAvailability ? this.alertMe() : null
+          }
           <ul>
             <li>
               In-store Availability: {product.inStoreAvailability ? "Available" : "Out of Stock"}
