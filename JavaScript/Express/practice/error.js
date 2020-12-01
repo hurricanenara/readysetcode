@@ -3,6 +3,12 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+// using errorhandler library
+/*
+const errorHandler = require('errorhandler');
+app.use(errorHandler());
+*/
+
 app.use(express.static('public'));
 
 const PORT = process.env.PORT || 4001;
