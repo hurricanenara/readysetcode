@@ -3,6 +3,8 @@
 // Events class.  The Events class should
 // have methods 'on', 'trigger', and 'off'.
 
+// great interview question
+
 class Events {
 
   constructor() {
