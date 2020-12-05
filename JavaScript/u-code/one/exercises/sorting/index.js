@@ -16,17 +16,27 @@ function bubbleSort(arr) {
     return arr;
 }
 
+// function selectionSort(arr) {
+//     for (let i = 0; i < arr.length; i++) {
+//         let indexOfMin = i;
+//         for (let j = i + 1; j < arr.length; j++) {
+//             if (arr[j] < arr[indexOfMin]) {
+//                 indexOfMin = j;
+//             }
+//         }
+//         if (indexOfMin !== i) {
+//             [arr[indexOfMin], arr[i]] = [arr[i], arr[indexOfMin]];
+//         }
+//     }
+//     return arr;
+// }
+
 function selectionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
-        let indexOfMin = i;
         for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[indexOfMin]) {
-                indexOfMin = j;
+            if (arr[j] < arr[i]) {
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
-        }
-        if (indexOfMin !== i) {
-            let lesser = arr[indexOfMin];
-            [arr[indexOfMin], arr[i]] = [arr[i], arr[indexOfMin]];
         }
     }
     return arr;
