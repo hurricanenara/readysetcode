@@ -38,7 +38,10 @@ function mergeSort(arr) {
     }
     const center = Math.floor(arr.length / 2);
     const left = arr.slice(0, center); // not including center by calling slice
-    
+    const right = arr.slice(center);
+
+    return merge(mergeSort(left), mergeSort(right));
+
 }
 
 function merge(left, right) {
