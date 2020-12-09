@@ -17,3 +17,9 @@ function storeData(data) {
 
 ajaxSimulate(1, storeData);
 console.log(dataReceived);
+
+function limitedInterval(callback, wait, limit) {
+    for (let i = 0; i < limit - wait; i += wait) {
+        setTimeout(callback, wait);
+    }
+}
