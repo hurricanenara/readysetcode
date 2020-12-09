@@ -7,7 +7,7 @@ So far I've been learning these languages and frameworks & libraries specific to
 * TypeScript
 * Python - Pandas, NumPy
 * Ruby - Ruby on Rails
-* Java
+* Java - Spring
 * C++
 
 I've also been enjoying using advanced CSS to bring life to SVGs.
