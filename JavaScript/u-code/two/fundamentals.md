@@ -6,3 +6,11 @@ Object.keys - O(N)
 Object.values - O(N)
 Object.entries - O(N)
 hasOwnProperty - O(1)
+
+Arrays
+Insertion - depends
+ -> insertion at beginning requires reindexing the rest of the elements
+Removal - depens
+ -> removal at beginning requires reindexing the rest of the elements
+Searching - O(N)
+Access - O(1)
