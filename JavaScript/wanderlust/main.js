@@ -25,7 +25,9 @@ const getVenues = async () => {
         if (response.ok) {
             // console.log(response);
             const jsonResponse = await response.json();
-            console.log(jsonResponse);
+            const venues = jsonResponse.response.groups[0].items.map(obj => obj.venue);
+            // console.log(jsonResponse);
+            console.log(venues);
         }
     } catch (error) {
         console.log(error)
