@@ -1,10 +1,12 @@
+const config = require('./config');
+
 // Foursquare API Info
-const clientId = 'OIOPH1QZC3CV422JJBGV4FUGCORUPE1J5KYGY53Y4GYIG4H2';
-const clientSecret = 'JXPYPBK5EFG5RC2XW0AHG25KFEKLEKFZBSE05FFWI22QWSHA';
+const clientId = config.foursquareAPI;
+const clientSecret = config.foursquareSecret;
 const url = 'https://api.foursquare.com/v2/venues/explore?near=';
 
 // OpenWeather Info
-const openWeatherKey = '6d1c0affe7514782de10dea502958a5f';
+const openWeatherKey = config.openWeatherAPI;
 const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
 // Page Elements
