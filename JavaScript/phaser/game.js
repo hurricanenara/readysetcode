@@ -81,4 +81,16 @@ const config = {
 //     }
 // }
 
+// constructing config and initiaing game
+
+/*
+const config = {
+    width: 300,
+    height: 500,
+    backgroundColor: "#125a69",
+};
+
+const game = new Phaser.Game(config);
+*/
+
 const game = new Phaser.Game(config);
