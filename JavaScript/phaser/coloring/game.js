@@ -36,6 +36,11 @@ function create() {
         paletteCircle.strokeColor = 0x000000;
         paletteCircle.isStroked = true;
         paletteCircle.lineWidth = 2;
+
+        paletteCircle.setInteractive();
+        paletteCircle.on('pointerup', function () {
+            gameState.selectedColor = this.color;
+        }, { color });
     }
 
 }
