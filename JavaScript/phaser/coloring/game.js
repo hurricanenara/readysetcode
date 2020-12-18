@@ -17,7 +17,13 @@ function create() {
         shape.setInteractive();
         shape.on('pointerup', function() {
           this.fillColor = gameState.selectedColor;  
-        })
+        });
+        shape.on('pointerover', function () {
+            this.setBlendMode(Phaser.BlendModes.SCREEN);
+        });
+        shape.on('pointerout', function () {
+            this.setBlendMode(Phaser.BlendModes.NORMAL);
+        });
 
     }
 
