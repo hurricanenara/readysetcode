@@ -14,7 +14,10 @@ function create() {
         shape.lineWidth = 2
 
         /* make each shape interactive here */
-
+        shape.setInteractive();
+        shape.on('pointerup', function() {
+            
+        })
         /* add a pointerup handler here */
 
     }
