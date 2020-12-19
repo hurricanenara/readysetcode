@@ -1,20 +1,30 @@
+* { font-family: sans-serif; }
 
 .login-btn {
-    background-color: brown;
-    width: 300px;
+    background-color: rgba(255, 255, 255, 0.375);
+    width: 80%;
     padding-top: 8px;
     padding-bottom: 8px;
     outline: none;
     border: none;
     color: white;
     line-height: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: rgba(255, 255, 255, 0.505);
 }
 
 .title-card {
+    display: flex;
+    flex-direction: column;
     width: 300px;
-    height: 200px;
+    height: 310px;
     border-radius: 10px;
     text-align: center;
+    margin: 0 auto;
     background: linear-gradient(270deg, #b661d9, #61d9bc, #ddb0df);
     background-size: 600% 600%;
     -webkit-animation: AnimationName 15s ease infinite;
@@ -22,9 +32,31 @@
     animation: AnimationName 15s ease infinite;
 }
 
+.title-card label {
+    color: white;
+    font-weight: 500;
+}
+
 .title-card h1 {
     padding-top: 20px;
+    padding-bottom: 20px;
     color: white;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container input {
+    margin-bottom: 20px;
+    outline: none;
+    border: white 1px solid;
+    height: 20px;
+}
+
+.button-container {
+    margin-top: 10px;
 }
 
 @-webkit-keyframes AnimationName {
