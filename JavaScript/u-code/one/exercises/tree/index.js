@@ -21,11 +21,20 @@ class Node {
     }
 
     remove(data) {
+        // for (let i = 0; i < this.children.length; i++) {
+        //     debugger
+        //     if (this.children[i].data === data) {
+        //         debugger
+        //         this.children.splice(i, 1);
+        //     }
+        // }
         for (let i = 0; i < this.children.length; i++) {
             if (this.children[i].data === data) {
                 this.children.splice(i, 1);
+                console.log(this.children, "spliced");
             }
         }
+        console.log(this.children);
     }
 }
 
