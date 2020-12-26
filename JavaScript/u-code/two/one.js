@@ -66,13 +66,23 @@ function same(arr1, arr2) {
 
     for (let key in freq1) {
         const squaredNum = key ** 2;
-        if (!((squaredNum in freq2) && (freq1[key] === freq2[squaredNum]))) {
+        if (!((squaredNum in freq2) && (freq1[key] === freq2[squaredNum]))) { // (squaredNum in freq2) is (freq2.hasOwnProperty(squaredNum))
             return false;
         }
     }
     return true;
 }
 
-console.log(same([1, 2, 3], [4, 1, 9])); //true
+// console.log(same([1, 2, 3], [4, 1, 9])); //true
 // console.log(same([1, 2, 3], [1, 9]));
-console.log(same([1, 2, 1], [4, 4, 1])); //false
+// console.log(same([1, 2, 1], [4, 4, 1])); //false
+
+function validAnagram(str1, str2) {
+
+}
+
+console.log(validAnagram("", "")); // true
+console.log(validAnagram("aaz", "zza")); // false
+console.log(validAnagram("anagram", "nagaram")); // true
+console.log(validAnagram("awesome", "awesom")); // false
+console.log(validAnagram("qwerty", "qeywrt")); // true
