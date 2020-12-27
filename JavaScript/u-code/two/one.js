@@ -78,7 +78,21 @@ function same(arr1, arr2) {
 // console.log(same([1, 2, 1], [4, 4, 1])); //false
 
 function validAnagram(str1, str2) {
+    if (str1.length !== str2.length) return false;
 
+    const anagram1 = {};
+    const anagram2 = {};
+
+    for (let i = 0; i < str1.length; i++) { 
+        anagram1[str1[i]] = ++anagram1[str1[i]] || 1;
+        anagram2[str2[i]] = ++anagram2[str2[i]] || 1;
+    }
+    for (let char in anagram1) {
+        if (!((anagram2.hasOwnProperty(char)) && (anagram1[char] === anagram2[char]))) {
+            return false;
+        }
+    }
+    return true;
 }
 
 console.log(validAnagram("", "")); // true
