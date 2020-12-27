@@ -17,6 +17,11 @@ function maxSubarraySum(arr, num) {
     return maxSum;
 }
 
+// Divide and Conquer Pattern
+
+function maxSubarraySum(arr, num) {
+
+}
+
 const arr1 = [2, 6, 9, 2, 1, 8, 5, 6, 3];
 console.log(maxSubarraySum(arr1, 3));
-
