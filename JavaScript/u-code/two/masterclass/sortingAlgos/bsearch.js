@@ -1,21 +1,40 @@
 
-function binarySearch(arr, target) {
-    if (!arr.length) return -1;
-    let mid = Math.floor(arr.length / 2);
+// function binarySearch(arr, target) {
+//     if (!arr.length) return -1;
+//     let mid = Math.floor(arr.length / 2);
 
-    if (arr[mid] === target) {
-        return mid;
-    } else if (target > arr[mid]) { // search right
-        let subSearch = binarySearch(arr.slice(mid + 1), target);
-        return subSearch < 0 ? -1 : subSearch + mid + 1;
-    } else if (target < arr[mid]) { // search left
-        return binarySearch(arr.slice(0, mid), target);
+//     if (arr[mid] === target) {
+//         return mid;
+//     } else if (target > arr[mid]) { // search right
+//         let subSearch = binarySearch(arr.slice(mid + 1), target);
+//         return subSearch < 0 ? -1 : subSearch + mid + 1;
+//     } else if (target < arr[mid]) { // search left
+//         return binarySearch(arr.slice(0, mid), target);
+//     }
+// }
+
+// non-recursive
+
+function binarySearch(arr, target) {
+    let start = 0;
+    let end = arr.length - 1;
+    let middle = Math.floor((start + end) / 2);
+
+    while (arr[middle] !== target && start <= end) {
+        if (target < arr[middle]) {
+            end = middle - 1;
+        } else {
+            start = middle + 1;
+        }
+        middle = Math.floor((start + end) / 2);
     }
+    return arr[middle] === target ? middle : -1
 }
 
-console.log(binarySearch([1, 2, 3, 4, 5], 2));
-console.log(binarySearch([1, 2, 3, 4, 5], 4));
-console.log(binarySearch([1, 2, 3, 4, 5], 6));
+console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));
+console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 20));
+// console.log(binarySearch([1, 2, 3, 4, 5], 4));
+// console.log(binarySearch([1, 2, 3, 4, 5], 6));
 
 // incorrect 
 
