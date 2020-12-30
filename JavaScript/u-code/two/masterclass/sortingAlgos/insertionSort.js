@@ -1,4 +1,3 @@
-const { join } = require("path");
 
 // using var to hoist block scoped variables
 // function insertionSort(arr) {
@@ -17,11 +16,9 @@ function insertionSort(arr) {
         let currVal = arr[i];
         let j = i - 1;
         while (arr[j] > currVal && j >= 0) {
-            // console.log(`i: ${i}, j+1: ${j + 1}`);
             arr[j + 1] = arr[j];
             j--;
         }
-        console.log(`i: ${i}, j+1: ${j + 1}`);
         arr[j + 1] = currVal;
     }
     return arr;

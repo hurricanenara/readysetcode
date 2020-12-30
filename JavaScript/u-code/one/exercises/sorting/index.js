@@ -16,31 +16,38 @@ function bubbleSort(arr) {
     return arr;
 }
 
-// function selectionSort(arr) {
+function selectionSort(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let minIndex = i;
+        // console.log(minIndex, i);
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex !== i) {
+            [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+            console.log(arr);
+        }
+    }
+    return arr;
+}
+
+// previously stated as selectionSort but it isn't
+// function bubbleSort(arr) {
 //     for (let i = 0; i < arr.length; i++) {
-//         let indexOfMin = i;
+//         console.log(arr);
 //         for (let j = i + 1; j < arr.length; j++) {
-//             if (arr[j] < arr[indexOfMin]) {
-//                 indexOfMin = j;
+//             if (arr[j] < arr[i]) {
+//                 console.log(arr, "entered if statement");
+//                 [arr[i], arr[j]] = [arr[j], arr[i]];
 //             }
-//         }
-//         if (indexOfMin !== i) {
-//             [arr[indexOfMin], arr[i]] = [arr[i], arr[indexOfMin]];
 //         }
 //     }
 //     return arr;
 // }
 
-function selectionSort(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[i]) {
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-        }
-    }
-    return arr;
-}
+console.log(selectionSort([6,3,1,0,4,8,9]));
 
 function mergeSort(arr) {
     if (arr.length ===1) {
