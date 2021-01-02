@@ -50,3 +50,15 @@ $paragraph = "Nara dusty rose matcha coffee spring summer fall Nara winter";
 // Substring
 
 echo substr_count($paragraph, "Nara");
+
+
+// Numbers
+
+echo abs(-10.99);
+echo abs(127);
+echo round(1.2);
+echo round(1.5);
+echo round(1298736.821763876);
+
+// Random Numbers
+
