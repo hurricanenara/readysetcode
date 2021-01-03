@@ -28,10 +28,11 @@ Array
 // pushing and popping
 
 // array_pop($my_array); // removes last element in array and returns removed element
-array_push($my_array, 6, 7, 8); // pushes 6 7 8 to the back of array;
-echo implode($my_array);
+echo array_push($my_array, 6, 7, 8); // pushes 6 7 8 to the back of array and echoes length
+
+// echo implode($my_array);
 
 // shifting and unshifting
 
-array_shift($my_array); // removes first element of array and returns removed element
-array_unshift($my_array, 0); // adds element to beginning of array
+// array_shift($my_array); // removes first element of array and returns removed element
+// array_unshift($my_array, 0); // adds element to beginning of array
