@@ -1,25 +1,57 @@
 
+// function mergeRanges(meetings) {
+//     const sortedMeetings = meetings.sort((a, b) => {
+//         return a.startTime - b.startTime;
+//     });
+
+//     const mergedMeetings = [];
+
+//     for (let i = 0; i < meetings.length - 1; i++) {
+//         console.log(i, "entered into for loop")
+//         const leftMeeting = meetings[i];
+//         const rightMeeting = meetings[i + 1];
+
+//         if (leftMeeting.endTime >= rightMeeting.startTime) {
+//             const mergedMeeting = { startTime: leftMeeting.startTime, endTime: Math.max(leftMeeting.endTime, rightMeeting.endTime) };
+//             mergedMeetings.push(mergedMeeting);
+//             i++;
+//         } else {
+//             mergedMeetings.push(leftMeeting);
+//         }
+//     }
+//     return mergedMeetings;
+// }
+
 function mergeRanges(meetings) {
-    const sortedMeetings = meetings.sort((a, b) => {
-        return a.startTime - b.startTime;
-    });
 
-    const mergedMeetings = [];
+  // Create a deep copy of the meetings array
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Deep_Clone
+  const meetingsCopy = JSON.parse(JSON.stringify(meetings));
 
-    for (let i = 0; i < meetings.length - 1; i++) {
-        console.log(i, "entered into for loop")
-        const leftMeeting = meetings[i];
-        const rightMeeting = meetings[i + 1];
+  // Sort by start time
+  const sortedMeetings = meetingsCopy.sort((a, b) => {
+    return a.startTime - b.startTime;
+  });
 
-        if (leftMeeting.endTime >= rightMeeting.startTime) {
-            const mergedMeeting = { startTime: leftMeeting.startTime, endTime: Math.max(leftMeeting.endTime, rightMeeting.endTime) };
-            mergedMeetings.push(mergedMeeting);
-            i++;
-        } else {
-            mergedMeetings.push(leftMeeting);
-        }
+  // Initialize mergedMeetings with the earliest meeting
+  const mergedMeetings = [sortedMeetings[0]];
+
+  for (let i = 1; i < sortedMeetings.length; i++) {
+    const currentMeeting    = sortedMeetings[i];
+    const lastMergedMeeting = mergedMeetings[mergedMeetings.length - 1];
+
+    // If the current meeting overlaps with the last merged meeting, use the
+    // later end time of the two
+    if (currentMeeting.startTime <= lastMergedMeeting.endTime) {
+      lastMergedMeeting.endTime = Math.max(lastMergedMeeting.endTime, currentMeeting.endTime);
+    } else {
+
+      // Add the current meeting since it doesn't overlap
+      mergedMeetings.push(currentMeeting);
     }
-    return mergedMeetings;
+  }
+
+  return mergedMeetings;
 }
 
 //first attempt! Don't be afraid to try out your thoughts
