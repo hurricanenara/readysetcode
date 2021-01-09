@@ -70,6 +70,17 @@ class SinglyLinkedList {
         }
         this.length++;
     }
+
+    get(index) {
+        if ((this.length < index) || (this.head === null)) return null;
+        let counter = index;
+        let currentNode = this.head;
+        while (counter > 0) {
+            counter--;
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+    }
 }
 
 const list = new SinglyLinkedList();
@@ -82,9 +93,10 @@ list.push("C");
 // list.shift();
 // list.shift();
 // list.shift();
-list.unshift("Z");
-list.unshift("X");
+// list.unshift("Z");
+// list.unshift("X");
 console.log(list);
+// console.log(list.get(2));
 
 // const list2 = new SinglyLinkedList();
 // console.log(list2.pop("A"));
