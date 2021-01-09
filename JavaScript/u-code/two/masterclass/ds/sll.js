@@ -29,7 +29,12 @@ class SinglyLinkedList {
 
     pop() {
         if (!this.head) return null;
-        
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+            this.length--;
+        }
+
         let currentNode = this.head;
 
         while (currentNode) {
@@ -37,10 +42,21 @@ class SinglyLinkedList {
                 currentNode.next = null;
                 this.tail = currentNode;
                 this.length--;
-                return;
             }
             currentNode = currentNode.next;
         }
+    }
+
+    shift() {
+        if (this.head === null) return null;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.head = this.head.next;
+
+        }
+        this.length--;
     }
 }
 
@@ -48,6 +64,13 @@ const list = new SinglyLinkedList();
 list.push("A");
 list.push("B");
 list.push("C");
+// list.pop();
+// list.pop();
+// list.pop();
+// list.shift();
+// list.shift();
+// list.shift();
 console.log(list);
-list.pop("B");
-console.log(list);
+
+// const list2 = new SinglyLinkedList();
+// console.log(list2.pop("A"));
