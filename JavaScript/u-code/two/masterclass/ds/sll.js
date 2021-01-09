@@ -126,12 +126,59 @@ class SinglyLinkedList {
             this.length--;
         }
     }
+
+    // common challenge
+    // reverse() {
+    //     if (!this.head) return null;
+    //     if (this.length === 1) return this;
+
+    //     for (let i = 0; i < this.length / 2; i++) {
+    //         let leftNode = this.get(i);
+    //         let rightNode = this.get(this.length - i - 1);
+    //         [leftNode.val, rightNode.val] = [rightNode.val, leftNode.val];
+    //     }
+    //     return this;
+    // }
+
+    // reverse() {
+    //     if (!this.head) return null;
+    //     if (this.length === 1) return this;
+
+    //     let beg = this.head;
+    //     let end = this.tail;
+    //     let counter = Math.floor(this.length / 2);
+    //     let size = this.length - 1;
+    //     while (counter) {
+    //         [beg.val, end.val] = [end.val, beg.val];
+    //         beg = beg.next;
+    //         end = this.get(--size);
+    //         counter--;
+    //     }
+    //     return this;
+    // }
+
+    reverse() {
+        let nodeOfInterest = this.head;
+        this.head = this.tail;
+        this.tail = nodeOfInterest;
+        let prev = null;
+        let next;
+        for (let i = 0; i < this.length; i++) {
+            next = nodeOfInterest.next;
+            nodeOfInterest.next = prev;
+            prev = nodeOfInterest;
+            nodeOfInterest = next;
+        }
+        return this;
+    }
 }
 
 const list = new SinglyLinkedList();
 list.push("A");
-// list.push("B");
+list.push("B");
 list.push("C");
+list.push("D");
+
 // list.pop();
 // list.pop();
 // list.pop();
@@ -141,11 +188,8 @@ list.push("C");
 // list.unshift("Z");
 // list.unshift("X");
 // list.insert(1, "Z");
-// list.remove(1);
-list.remove(1);
-list.remove(1);
-console.log(list);
-// console.log(list.head.next);
+// console.log(list);
+console.log(list.reverse());
 
 
 // const list2 = new SinglyLinkedList();
