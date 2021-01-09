@@ -82,20 +82,29 @@ class SinglyLinkedList {
         return currentNode;
     }
 
-    set(index, val) {
-        const newNode = new Node(val);
-        const rightNode = this.get(index);
-        const leftNode = this.get(index - 1);
+    // insertAt(index, val) {
+    //     const newNode = new Node(val);
+    //     const rightNode = this.get(index);
+    //     const leftNode = this.get(index - 1);
 
-        if (this.head === null || index === 0) {
-            this.unshift(val);
-        } else if (index >= this.length) {
-            this.push(val);
-        } else {
-            leftNode.next = newNode;
-            newNode.next = rightNode;
-            this.length++;
+    //     if (this.head === null || index === 0) {
+    //         this.unshift(val);
+    //     } else if (index >= this.length) {
+    //         this.push(val);
+    //     } else {
+    //         leftNode.next = newNode;
+    //         newNode.next = rightNode;
+    //         this.length++;
+    //     }
+    // }
+
+    set(index, val) {
+        const foundNode = this.get(index);
+        if (foundNode) {
+            foundNode.val = val;
+            return true;
         }
+        return false;
     }
 }
 
@@ -111,7 +120,7 @@ list.push("C");
 // list.shift();
 // list.unshift("Z");
 // list.unshift("X");
-list.set(4, "Z");
+list.set(0, "Z");
 console.log(list);
 // console.log(list.get(2));
 
