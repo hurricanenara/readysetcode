@@ -110,6 +110,22 @@ class SinglyLinkedList {
             this.length++;
         }
     }
+
+    remove(index) {
+        const rightNode = this.get(index + 1);
+        const leftNode = this.get(index - 1);
+
+        if (index < 0 || !this.length) return null;
+
+        if (index >= (this.length - 1)) {
+            this.pop();
+        } else if (index === 0) {
+            this.shift();
+        } else {
+            leftNode.next = rightNode;
+            this.length--;
+        }
+    }
 }
 
 const list = new SinglyLinkedList();
@@ -124,9 +140,12 @@ list.push("C");
 // list.shift();
 // list.unshift("Z");
 // list.unshift("X");
-list.insert(1, "Z");
+// list.insert(1, "Z");
+// list.remove(1);
+list.remove(1);
+list.remove(1);
 console.log(list);
-console.log(list.head.next);
+// console.log(list.head.next);
 
 
 // const list2 = new SinglyLinkedList();
