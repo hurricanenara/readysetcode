@@ -1,4 +1,4 @@
-const { throwStatement } = require("@babel/types");
+const { throwStatement, tsExpressionWithTypeArguments } = require("@babel/types");
 
 class Node {
     constructor(val) {
@@ -99,6 +99,38 @@ class DoublyLinkedList {
         return currentNode;
     }
 
+    set(index, val) {
+        const foundNode = this.get(index);
+        if (foundNode) {
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
+
+    insert(index, val) {
+        const newNode = new Node(val);
+        if (!this.length) {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        if (index === 0) {
+            this.unshift(val);
+        } else if (index === this.length) {
+            this.push(val);
+        } else {
+            const foundNode = this.get(index);
+            if (foundNode) {
+                const leftToFoundNode = foundNode.prev;
+                foundNode.prev = newNode;
+                newNode.prev = leftToFoundNode;
+                leftToFoundNode.next = newNode;
+                newNode.next = foundNode;
+            }
+            this.length++;
+        }
+    }
+
     forEach(cb) {
         let currentNode = this.head;
         while (currentNode) {
@@ -115,7 +147,8 @@ list.push("B");
 list.push("C");
 list.push("D");
 list.push("E");
-list.push("F");
+list.insert(4, "Z");
+// list.push("F");
 // console.log(list.pop());
 // console.log(list.unshift("A"));
 // console.log(list);
