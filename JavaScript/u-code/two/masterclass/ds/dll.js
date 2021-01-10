@@ -29,18 +29,18 @@ class DoublyLinkedList {
 
     pop() {
         if (!this.length) return null;
+        const currentTail = this.tail;
         if (this.length === 1) {
             this.head = null;
             this.tail = null;
-            this.length--;
-            return;
+        } else {
+            const newTail = currentTail.prev;
+            currentTail.prev.next = null;
+            currentTail.prev = null;
+            this.tail = newTail;
         }
-        const currentTail = this.tail;
-        const newTail = currentTail.prev;
-        currentTail.prev.next = null;
-        currentTail.prev = null;
-        this.tail = newTail;
         this.length--;
+        return currentTail;
     }
 
     forEach(cb) {
@@ -57,11 +57,11 @@ const list = new DoublyLinkedList();
 list.push("A");
 list.push("B");
 list.push("C");
-list.pop();
+console.log(list.pop());
 // list.push("C");
 // list.push("D");
-console.log(list.forEach(node => {
-    console.log(`${node.val}, head: ${list.head.val === node.val}, tail: ${list.tail.val === node.val}
-    length: ${list.length}`);
-}));
+// console.log(list.forEach(node => {
+//     console.log(`${node.val}, head: ${list.head.val === node.val}, tail: ${list.tail.val === node.val}
+//     length: ${list.length}`);
+// }));
 // console.log(list);
