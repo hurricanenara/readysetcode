@@ -60,6 +60,22 @@ class DoublyLinkedList {
         return currentHead;
     }
 
+    unshift(val) {
+        const newHead = new Node(val);
+        if (!this.length) {
+            this.head = newHead;
+            this.tail = newHead;
+        } else {
+            const currentHead = this.head;
+            currentHead.prev = newHead;
+            newHead.prev = null;
+            newHead.next = currentHead;
+            this.head = newHead;
+        }
+        this.length++;
+        return this.head;
+    }
+
     forEach(cb) {
         let currentNode = this.head;
         while (currentNode) {
@@ -71,16 +87,16 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
-list.push("A");
+// list.push("A");
 // list.push("B");
 // list.push("C");
 // console.log(list.pop());
-console.log(list.shift());
-console.log(list);
+console.log(list.unshift("A"));
+// console.log(list);
 // list.push("C");
 // list.push("D");
-// console.log(list.forEach(node => {
-//     console.log(`${node.val}, head: ${list.head.val === node.val}, tail: ${list.tail.val === node.val}
-//     length: ${list.length}`);
-// }));
+console.log(list.forEach(node => {
+    console.log(`${node.val}, head: ${list.head.val === node.val}, tail: ${list.tail.val === node.val}
+    length: ${list.length}`);
+}));
 // console.log(list);
