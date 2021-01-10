@@ -13,6 +13,17 @@ class Stack {
         this.size = 0;
     }
 
+    // this.first is at the top of the stack
+    /*
+    | this.first |
+    |    node    |
+    |    node    |
+    |    node    |
+    |    node    |
+    | this.last  |
+    |____________|
+    */
+
     push(val) {
         const newNode = new Node(val);
         if (!this.size) {
