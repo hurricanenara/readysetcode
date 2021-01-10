@@ -1,3 +1,4 @@
+const { throwStatement } = require("@babel/types");
 
 class Node {
     constructor(val) {
@@ -37,10 +38,26 @@ class DoublyLinkedList {
             const newTail = currentTail.prev;
             currentTail.prev.next = null;
             currentTail.prev = null;
-            this.tail = newTail;
+            this.tail = newTail; // disconnect currentTail from the rest of the list
         }
         this.length--;
         return currentTail;
+    }
+
+    shift() {
+        if (!this.length) return null;
+        const currentHead = this.head;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            const newHead = currentHead.next;
+            currentHead.next.prev = null;
+            currentHead.next = null;
+            this.head = newHead;
+        }
+        this.length--;
+        return currentHead;
     }
 
     forEach(cb) {
@@ -55,9 +72,11 @@ class DoublyLinkedList {
 
 const list = new DoublyLinkedList();
 list.push("A");
-list.push("B");
-list.push("C");
-console.log(list.pop());
+// list.push("B");
+// list.push("C");
+// console.log(list.pop());
+console.log(list.shift());
+console.log(list);
 // list.push("C");
 // list.push("D");
 // console.log(list.forEach(node => {
