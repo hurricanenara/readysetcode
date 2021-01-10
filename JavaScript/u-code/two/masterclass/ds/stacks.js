@@ -72,20 +72,32 @@ class Stack {
         return ++this.size;
     }
 
+    // pop() {
+    //     const currentHead = this.first;
+    //     if (!currentHead) {
+    //         return null;
+    //     } else if (this.size === 1) {
+    //         this.first = null;
+    //         this.last = null;
+    //     } else {
+    //         const newHead = currentHead.next;
+    //         currentHead.next = null;
+    //         this.first = newHead;
+    //     }
+    //     this.size--;
+    //     return currentHead.val;
+    // }
+
+    // shorter pop()
     pop() {
-        const currentHead = this.first;
-        if (!currentHead) {
-            return null;
-        } else if (this.size === 1) {
-            this.first = null;
+        const currentFirst = this.first;
+        if (!this.first) return null;
+        if (this.first === this.last) {
             this.last = null;
-        } else {
-            const newHead = currentHead.next;
-            currentHead.next = null;
-            this.first = newHead;
         }
+        this.first = currentFirst.next;
         this.size--;
-        return currentHead.val;
+        return currentFirst.val;
     }
 
     forEach(cb) {

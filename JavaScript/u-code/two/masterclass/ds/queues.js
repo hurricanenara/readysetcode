@@ -30,18 +30,31 @@ class Queue {
     }
 
     // pop
+    // dequeue() {
+    //     const currentFirst = this.first;
+    //     if (!currentFirst) {
+    //         return null;
+    //     } else if(this.size === 1)  {
+    //         // doesn't the node still exist in memory though?
+    //         this.first = null;
+    //         this.last = null;
+    //     } else {
+    //         const newFirst = currentFirst.next;
+    //         currentFirst.next = null;
+    //         this.first = newFirst;
+    //     }
+    //     this.size--;
+    //     return currentFirst.val;
+    // }
+
+    // shorter dequeue
     dequeue() {
+        if (!this.first) return null;
         const currentFirst = this.first;
-        if (!currentFirst) {
-            return null;
-        } else if(this.size === 1)  {
-            this.first = null;
+        if (this.first === this.last) {
             this.last = null;
-        } else {
-            const newFirst = currentFirst.next;
-            currentFirst.next = null;
-            this.first = newFirst;
         }
+        this.first = currentFirst.next;
         this.size--;
         return currentFirst.val;
     }
