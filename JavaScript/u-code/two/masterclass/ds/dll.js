@@ -77,6 +77,7 @@ class DoublyLinkedList {
     }
 
     get(index) {
+        if (index < 0 || index >= this.length) return null;
         const mid = this.length / 2;
         let counter;
         let currentNode;
