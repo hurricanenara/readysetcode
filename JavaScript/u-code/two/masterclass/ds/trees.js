@@ -40,6 +40,73 @@ class BinarySearchTree {
         }
     }
 
+    find(val) {
+        let currentNode = this.root;
+        while (currentNode) {
+            if (val === currentNode.val) return true;
+            if (val < currentNode.val) {
+                currentNode = currentNode.left;
+            } else {
+                currentNode = currentNode.right;
+            }
+        }
+        return false;
+    }
+
+}
+
+const tree = new BinarySearchTree();
+tree.root = new Node(10);
+const root = tree.root;
+
+root.left = new Node(5);
+root.left.left = new Node(2);
+root.left.right = new Node(7);
+
+root.right = new Node(13);
+root.right.left = new Node(11);
+root.right.right = new Node(16);
+
+// console.log(tree.find(2));
+
+// find recursive
+// find(val, node = this.root) {
+//         if (node === null) return false;
+//         if (val === node.value) return true;
+//         return val < node.value ? this.find(val, node.left) : this.find(val, node.right);
+// }
+
+// console.log(tree.insert(17));
+
+
+
+    //shortened
+
+    // insert(value) {
+    //     var newNode = new Node(value);
+    //     if(this.root === null){
+    //         this.root = newNode;
+    //         return this;
+    //     }
+    //     var current = this.root;
+    //     while(true){
+    //         if(value === current.value) return undefined;
+    //         if(value < current.value){
+    //             if(current.left === null){
+    //                 current.left = newNode;
+    //                 return this;
+    //             }
+    //             current = current.left;
+    //         } else {
+    //             if(current.right === null){
+    //                 current.right = newNode;
+    //                 return this;
+    //             } 
+    //             current = current.right;
+    //         }
+    //     }
+    // }
+
     // insert(val) {
     //     const newNode = new Node(val);
     //     if (!this.root) {
@@ -85,20 +152,3 @@ class BinarySearchTree {
     //         }
     //     }
     // }
-}
-
-const tree = new BinarySearchTree();
-tree.root = new Node(10);
-const root = tree.root;
-
-root.left = new Node(5);
-root.left.left = new Node(2);
-root.left.right = new Node(7);
-
-root.right = new Node(13);
-root.right.left = new Node(11);
-root.right.right = new Node(16);
-
-console.log(tree.insert(17));
-
-console.log(root.right.right.right);
