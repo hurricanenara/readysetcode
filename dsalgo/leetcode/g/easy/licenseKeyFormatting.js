@@ -20,13 +20,14 @@ var licenseKeyFormatting = function(S, K) {
 };
 
 // Shorter solution
+
+// Runtime: 68 ms, faster than 100.00% of JavaScript online submissions for License Key Formatting.
+// Memory Usage: 43.9 MB, less than 73.76% of JavaScript online submissions for License Key Formatting.
 var licenseKeyFormatting = function(S, K) {
-    const newStr = S.replace(/-/g, '').toUpperCase(), // Remove existing dashes and convert any lowercase letters to uppercase
-             arr = newStr.split(''); // Convert string to an array so we can manipulate it
-
-    for (let i = arr.length - 1 - K; i >= 0; i-= K) { // Loop through array backwards and decrement by value of K
-        arr[i] = arr[i] + '-';
+    const scrubbed = S.replace(/\-/g, "").toUpperCase();
+    const arr = scrubbed.split("");
+    for (let i = arr.length - 1 - K; i >= 0; i -= K) {
+        arr[i] = arr[i] + "-";
     }
-
-    return arr.join('');
-}
+    return arr.join("");
+};
