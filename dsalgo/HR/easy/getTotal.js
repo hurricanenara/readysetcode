@@ -8,7 +8,7 @@ gcd % a1, gcd % a2, b1 % gcd, b2 % gcd equal 0, it is a valid value therefore in
 function getTotalX(a, b) {
     // Write your code here
     let count = 0;
-    for (let i = 1; i < 100; i++) {
+    for (let i = 1; i <= 100; i++) {
         if (a.every(num => i % num === 0)) {
             if (b.every(num => num % i === 0)) {
                 count++;
