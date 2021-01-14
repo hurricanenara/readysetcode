@@ -1,4 +1,4 @@
-// Runtime: 172 ms, faster than 44.62% of JavaScript online submissions for Logger Rate Limiter.
+// Runtime: 164 ms, faster than 77.95% of JavaScript online submissions for Logger Rate Limiter.
 // Memory Usage: 48.9 MB, less than 32.31% of JavaScript online submissions for Logger Rate Limiter.
 
 /**
@@ -17,13 +17,10 @@ var Logger = function() {
  * @return {boolean}
  */
 Logger.prototype.shouldPrintMessage = function(timestamp, message) {
-    debugger
     if (this.tracker[message] === undefined || timestamp >= (this.tracker[message] + 10)) {
-        debugger
         this.tracker[message] = timestamp;
         return true;
     } else {
-        debugger
         return false;
     }
 };
