@@ -1,7 +1,7 @@
 
 function birthday(s, d, m) {
     let ways = 0;
-    if (m === 1 && d === s[0]) return ++ways;
+    // if (m === 1 && d === s[0]) return ++ways;
     for (let i = 0; i <= s.length - m; i++) { // stuck because i bounds was set to s.length - 1 - m, worked after removing 1, Discussion
         if (s.slice(i, i + m).reduce((acc, val) => {
             return acc + val;
