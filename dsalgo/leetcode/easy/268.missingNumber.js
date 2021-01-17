@@ -8,6 +8,16 @@ var missingNumber = function(nums) {
     return sum - nums.reduce((acc, el) => acc + el);
 };
 
+// super cool solution from Discuss
+
+var missingNumber = function(nums) {
+    const arr = new Array(nums.length + 1).fill(-1);
+    for (let num of nums) {
+        arr[num] = num;
+    }
+    return arr.indexOf(-1);
+};
+
 console.log(missingNumber([3,0,1])); // 2
 console.log(missingNumber([0,1])); // 2
 console.log(missingNumber([9,6,4,2,3,5,7,0,1])); // 8

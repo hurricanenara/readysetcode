@@ -25,8 +25,8 @@
 // Runtime: 96 ms, faster than 38.64% of JavaScript online submissions for Best Time to Buy and Sell Stock.
 // Memory Usage: 48.9 MB, less than 5.02% of JavaScript online submissions for Best Time to Buy and Sell Stock.
 var maxProfit = function(prices) {
-    let buy = Infinity;
-    let profit = 0;
+    let buy = Infinity; 1
+    let profit = 0; 5
 
     prices.forEach(price => {
         if (price < buy) buy = price;
@@ -35,4 +35,4 @@ var maxProfit = function(prices) {
     return profit;
 };
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(maxProfit([7, 1, 5, 3, 6, 4])); // 5

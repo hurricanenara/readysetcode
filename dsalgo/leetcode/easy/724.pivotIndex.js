@@ -19,6 +19,19 @@ var pivotIndex = function(nums) {
   return -1;
 };
 
+// shorter solution
+// Runtime: 124 ms, faster than 31.03% of JavaScript online submissions for Find Pivot Index.
+// Memory Usage: 40.6 MB, less than 92.73% of JavaScript online submissions for Find Pivot Index.
+var pivotIndex = function(nums) {
+    const sum = nums.reduce((acc, el) => acc + el);
+    let leftSum = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (leftSum === sum - nums[i] - leftSum) return i;
+        leftSum += nums[i];
+    }
+    return -1;
+};
+
 console.log(pivotIndex([1,7,3,6,5,6]));
 console.log(pivotIndex([1, 2, 3]));
 console.log(pivotIndex([-1,-1,-1,0,1,1]));

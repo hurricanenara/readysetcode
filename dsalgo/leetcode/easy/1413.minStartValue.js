@@ -10,5 +10,20 @@ var minStartValue = function(nums) {
       min = Math.min(min, sum);
     }
     if (min === 1) return min;
-    return (-1 * min) + 1;
-};
+    return (min * -1) + 1;
+}
+
+// another great solution (faster);
+
+function minStartValue(nums) {
+  let min = Infinity;
+  let sum = 0;
+  nums.forEach(n => {
+    min = Math.min(min, sum += n);
+  });
+  return min >= 1 ? 1 : Math.abs(min - 1);
+}
+
+console.log(minStartValue([-3,2,-3,4,2])); // 5
+console.log(minStartValue([1,2])); // 1
+console.log(minStartValue([1,-2,-3])); // 5
