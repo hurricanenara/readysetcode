@@ -3,8 +3,7 @@
 // Memory Usage: 38.8 MB, less than 73.10% of JavaScript online submissions for Two Sum II - Input array is sorted.
 
 var twoSum = function(numbers, target) {
-    let i = 0;
-    let j = numbers.length - 1;
+    let i = 0, j = numbers.length - 1;
     
     while (i < j) {
         if (numbers[i] + numbers[j] < target) i++;
