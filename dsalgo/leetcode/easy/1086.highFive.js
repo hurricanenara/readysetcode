@@ -36,4 +36,27 @@ var getTopFiveAvg = function(scores) {
     
 }
 
+// anoter leetcoder's solution I like
+var highFive = function(items) {
+    const scoreBoard = {};
+    for(const [id, score] of items) {
+        if(scoreBoard[id]) {
+            scoreBoard[id].push(score);
+        } else {
+            scoreBoard[id] = [score];
+        }
+    }
+    const getAverage = (res, student) => {
+        const topFive = scoreBoard[student]
+        .sort((a, b) => b - a)
+        .reduce((total, curr, i) => {
+            if(i < 5) total += curr;
+            return total;
+        });
+        res.push([student, Math.floor(topFive / 5)]);
+        return res;
+    }
+    return Object.keys(scoreBoard).reduce(getAverage, [])
+};
+
 console.log(highFive([[1,91],[1,92],[2,93],[2,97],[1,60],[2,77],[1,65],[1,87],[1,100],[2,100],[2,76]]));
