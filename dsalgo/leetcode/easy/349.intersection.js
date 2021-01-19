@@ -1,5 +1,10 @@
+// https://leetcode.com/problems/intersection-of-two-arrays/
 
 // using Map
+
+// Runtime: 84 ms, faster than 54.90% of JavaScript online submissions for Intersection of Two Arrays.
+// Memory Usage: 39.8 MB, less than 60.24% of JavaScript online submissions for Intersection of Two Arrays.
+
 // var intersection = function(nums1, nums2) {
 //   let map = new Map();
 //   for (let num of nums1) {
