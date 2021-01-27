@@ -20,3 +20,17 @@ select (
     order by Salary desc
     limit 1 offset 1
 ) as SecondHighestSalary
+
+
+-- Like this one
+SELECT
+IFNULL ((SELECT DISTINCT Salary
+FROM Employee
+ORDER BY Salary Desc
+LIMIT 1 OFFSET 1),NULL) AS SecondHighestSalary;
+
+-- Another way to do it
+select MAX(Salary) as SecondHighestSalary 
+from Employee
+where Salary <  (select MAX(Salary) as SecondHighestSalary 
+from Employee);
