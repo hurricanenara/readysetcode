@@ -1,3 +1,17 @@
+// https://www.hackerrank.com/challenges/electronics-shop/problem?isFullScreen=true
+
+function getMoneySpent(keyboards, drives, b) {
+    keyboards.sort((a, b) => b - a);
+    drives.sort((a, b) => a - b);
+    let max = -1;
+    for (let i = 0; i < keyboards.length; i++) {
+        for (let j = 0; j < drives.length; j++) {
+            if (keyboards[i] + drives[j] > b) break;
+            if (keyboards[i] + drives[j] > max) max = keyboards[i] + drives[j];
+        }
+    }
+    return max;
+}
 
 // function getMoneySpent(keyboards, drives, b) {
 //     debugger
@@ -21,6 +35,8 @@
 //     }
 
 // }
+
+// X
 
 // console.log(getMoneySpent([40,50,60], [5,8,12], 60));
 // console.log(getMoneySpent([4], [5], 5));
