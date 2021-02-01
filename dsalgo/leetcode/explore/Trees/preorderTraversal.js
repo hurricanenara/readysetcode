@@ -51,6 +51,13 @@ var preorderTraversal = function(root) {
     return result;
 };
 
+//short recursion
+var preorderTraversal = function(root) {
+    // root -> left -> right
+    if(!root) return [];
+    return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)]
+};
+
 const tree = new Node(1, null, new Node(2, new Node(3), null));
 const tree2 = new Node(1, new Node(2), null);
 const tree3 = new Node(1, null, new Node(2));
