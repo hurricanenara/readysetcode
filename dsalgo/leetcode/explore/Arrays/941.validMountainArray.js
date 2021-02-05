@@ -21,4 +21,28 @@ var validMountainArray = function(arr) {
     return isDecreasing && isIncreasing;
 };
 
+// X almost
+
 console.log(validMountainArray([0,2,3,4,5,2,1,0]));
+
+//
+var validMountainArray = function(arr) {
+    if (arr.length < 3) return false
+    
+    let hasIncreased = false
+    let hasDecreased = false
+    
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > arr[i-1]) {
+            if (hasDecreased) return false  
+            hasIncreased = true
+        } else if (arr[i] < arr[i-1]) {
+            if (!hasIncreased) return false
+            hasDecreased = true
+        } else {
+            return false
+        }
+    }
+    
+    return hasIncreased && hasDecreased
+};
