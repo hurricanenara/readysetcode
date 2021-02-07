@@ -5,6 +5,9 @@ class Node {
     }
 }
 
+
+// 96 ms
+// 41 mb
 var oddEvenList = function(head) {
     if (!head) return head;
     let oddPointer = head;
@@ -18,6 +21,26 @@ var oddEvenList = function(head) {
         evenPointer = evenPointer.next;
     }
     oddPointer.next = evenHead;
+    return head;
+};
+
+// Runtime: 88 ms, faster than 82.33% of JavaScript online submissions for Odd Even Linked List.
+// Memory Usage: 41.4 MB, less than 14.79% of JavaScript online submissions for Odd Even Linked List.
+var oddEvenList = function(head) {
+    if (!head) return head;
+
+    let odd = head;
+    let even = head.next;
+
+    while (odd && odd.next) {
+        let temp = odd.next;
+        odd.next = odd.next.next;
+        if (odd.next) {
+            odd = odd.next;
+            temp.next = odd.next;
+        }
+    }
+    odd.next = even;
     return head;
 };
 
