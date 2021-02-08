@@ -76,7 +76,21 @@
 // Let's code!
 // -----------
 function balancedParens(str) {
+    if (str === "") return true;
 
+    const dictionary = {"[":"]", "(":")", "{":"}"};
+    const valid = "{}[]()";
+    const stack = [];
+    for (let i = 0; i < str.length; i++) {
+        let currChar = str[i];
+        let peek = stack[stack.length - 1];
+        if (currChar === dictionary[peek]) {
+            stack.pop();
+        } else if (currChar !== dictionary[peek] && valid.includes(currChar)) { // {[]}
+            stack.push(currChar);
+        }
+    }
+    return stack.length === 0;
 }
 
 exports.balancedParens = balancedParens;

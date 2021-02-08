@@ -1,7 +1,7 @@
 
 const isValid = (s) => { // "([)]", "{[]}"
     const dictionary = { "(": ")", "[": "]", "{": "}" }
-    let stack = [s[0]];1
+    let stack = [s[0]];
 
     if (s === "") return true;
 
