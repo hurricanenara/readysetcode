@@ -90,7 +90,6 @@ function balancedParens(str) {
             stack.push(currChar);
         }
     }
-    return stack.length === 0;
-}
+  
 
 exports.balancedParens = balancedParens;
