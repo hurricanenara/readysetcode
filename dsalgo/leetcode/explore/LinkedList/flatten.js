@@ -32,6 +32,33 @@ var flatten = function(head) {
     return senteniel.next;
 };
 
+// iterative approach
+var flatten = function(head) {
+    if (!head) return null;
+    let dummyHead = new Node(0, null, head, null);
+    
+    const stack = [head];
+    let current = dummyHead;
+    let prev = null;
+    
+    while (stack.length) {
+        current = stack.pop();
+        
+        if (prev) {
+            current.prev = prev;
+            prev.next = current;
+        }
+        
+        if (current.next) stack.push(current.next);
+        if (current.child) {
+            stack.push(current.child);
+            current.child = null;
+        }
+        prev = current;
+    }
+    return dummyHead.next;
+};
+
 var node12 = new Node(12)
 var node11 = new Node(11)
 var node10 = new Node(10)
