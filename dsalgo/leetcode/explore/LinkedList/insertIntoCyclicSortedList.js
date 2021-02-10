@@ -36,3 +36,28 @@ var insert = function(head, insertVal) {
 };
 
 // X
+
+// first attempt, wrong solution, not enough cases solved
+
+var insert = function(head, insertVal) {
+    let node = new Node(insertVal, null);
+    let pointer = head;
+    if (!head) {
+        node.next = node;
+        return node;
+    }
+    if (pointer.next === pointer) {
+        pointer.next = node;
+        node.next = pointer;
+        return head;
+    }
+    while (pointer) {
+        if (insertVal > pointer.val && insertVal <pointer.next.val) {
+            pointer.next = node;
+            node.next = pointer.next;
+            return head;
+        }
+        pointer = pointer.next;
+    }
+    return head;
+};
