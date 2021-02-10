@@ -1,3 +1,7 @@
+// https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
+
+// Runtime: 80 ms, faster than 68.40% of JavaScript online submissions for Flatten a Multilevel Doubly Linked List.
+// Memory Usage: 40 MB, less than 88.85% of JavaScript online submissions for Flatten a Multilevel Doubly Linked List.
 
 class Node {
     constructor(val, prev=null, next=null, child=null) {
@@ -7,9 +11,6 @@ class Node {
         this.child = child;
     }
 }
-
-
-
 
 // my solution that works fine via vscode and chrome devtools but not on leetcode:
 // solved by detaching senteniel.next's prev proprety to null
