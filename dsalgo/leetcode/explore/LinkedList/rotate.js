@@ -1,3 +1,7 @@
+// https://leetcode.com/problems/rotate-list/
+
+// Runtime: 88 ms, faster than 85.84% of JavaScript online submissions for Rotate List.
+// Memory Usage: 40.1 MB, less than 88.20% of JavaScript online submissions for Rotate List.
 
 var rotateRight = function(head, k) {
     let dummy = new ListNode();
@@ -19,5 +23,7 @@ var rotateRight = function(head, k) {
     slow.next = null;
     return dummy.next;
 }
+
+// X
 
 // rotateRight([1,2,3,4,5], k) => [4,5,1,2,3]
