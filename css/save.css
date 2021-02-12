@@ -1,0 +1,74 @@
+@media (min-width:320px) and (max-width:410px)  { 
+  /* smartphones, iPhone, portrait 480x320 phones */
+  .projects-grid-2 {
+    row-gap: 1px;
+    padding-top: 10px;
+    font-size: .9em;
+  }
+
+  .cloud-text .icon {
+    display: flex;
+    justify-content: center;
+  }
+  .project-row {
+    height: 60px;
+  }
+
+  .ed-row {
+    height: 65px;
+  }
+  .projects-grid {
+    row-gap: 1px;
+    font-size: .9em;
+  }
+  .cloud-text i {
+    font-size: 24px;
+  }
+  .exp-grid-3 {
+    row-gap: 1px;
+    font-size: .9em;
+    line-height: 14px;
+  }
+  .exp-grid-row {
+    column-gap: 3px;
+  }
+  .exp-grid-3 span {
+    font-size: .8em;
+  }
+  .cloud-circle {
+    width: 370px;
+    height: 370px;
+    border-radius:30%;
+    filter: url(#filter);
+    box-shadow: 500px 500px 10px 0px rgb(255, 255, 255);
+    position: absolute;
+    /* top: -450px;
+    left: -495px; */
+    z-index: 6;
+  }
+
+  .experience .cloud-text {
+    left: 49%;
+  }
+
+  .cloud-text {
+    color: black;
+    position: absolute;
+    top: 65%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    /* border: 1px solid rgb(191, 191, 191); */
+    height: 70%;
+    width: 90%;
+    line-height: 13px;
+    text-transform: uppercase;
+  }
+
+
+
+  .cloud-text h2 {
+    margin-bottom: 24px;
+    font-size: 30px;
+  }
+}
