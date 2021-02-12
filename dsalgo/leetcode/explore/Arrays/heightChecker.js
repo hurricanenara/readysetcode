@@ -1,4 +1,8 @@
 
+//without sorting
+
+// Runtime: 80 ms, faster than 71.83% of JavaScript online submissions for Height Checker.
+// Memory Usage: 39.3 MB, less than 13.18% of JavaScript online submissions for Height Checker.
 
 var heightChecker = function(heights) {
     const counts = new Array(101).fill(0)
@@ -17,13 +21,24 @@ var heightChecker = function(heights) {
            if (i != heights[index]) {
                count++
            }
-           index++
-           counts[i]--
+           index++;
+           counts[i]--;
         }
     }
     
     return count
 };
+
+// oneliner after sorting
+
+// Runtime: 84 ms, faster than 43.66% of JavaScript online submissions for Height Checker.
+// Memory Usage: 38.8 MB, less than 47.28% of JavaScript online submissions for Height Checker.
+var heightChecker = function (heights) {
+  return [...heights]
+    .sort((a, b) => a - b)
+    .reduce((acc, cur, index) => (cur == heights[index] ? acc : acc + 1), 0);
+};
+
 
 // console.log(heightChecker([1,1,4,2,1,3]));
 // console.log(heightChecker([5,1,2,3,4]));
