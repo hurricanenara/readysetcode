@@ -1,4 +1,4 @@
-function DFSPreOrder() {
+function DFSPostOrder() {
     let data = [];
     function traverse(node) {
         if (node.left) traverse(node.left);

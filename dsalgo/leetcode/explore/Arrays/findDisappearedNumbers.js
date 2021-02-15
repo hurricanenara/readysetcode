@@ -22,8 +22,8 @@ var findDisappearedNumbers = function(nums) {
 };
 
 //using hash table o(n) time and space
-// Runtime: 132 ms, faster than 53.43% of JavaScript online submissions for Find All Numbers Disappeared in an Array.
-// Memory Usage: 50.4 MB, less than 17.98% of JavaScript online submissions for Find All Numbers Disappeared in an Array.
+// Runtime: 112 ms, faster than 83.18% of JavaScript online submissions for Find All Numbers Disappeared in an Array.
+// Memory Usage: 50.7 MB, less than 15.14% of JavaScript online submissions for Find All Numbers Disappeared in an Array.
 var findDisappearedNumbers = function(nums) {
     let hash = {};
     for (let num of nums) {
