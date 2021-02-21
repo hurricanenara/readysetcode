@@ -1,3 +1,5 @@
+package Java;
+
 class Dinner {
 
     private void makeNoodles(Noodle noodle, String sauce) {

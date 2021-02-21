@@ -1,3 +1,5 @@
+package Java;
+
 class BiangBiang extends Noodle {
 
     BiangBiang() {
