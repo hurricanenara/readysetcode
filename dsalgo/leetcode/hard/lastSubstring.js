@@ -25,4 +25,22 @@ var lastSubstring = function(s) {
     return s.substring(i);
 };
 
+
+var lastSubstring = function(s) {
+    let i = 0, j = 1, k = 0, l = s.length;
+    while (j + k < l) {
+        if (s[i+k] == s[j+k]) {
+            k++;
+            continue;
+        } else if (s[i+k] > s[j+k]) {
+            j = j + k + 1;
+        } else {
+            i = Math.max(i + k + 1, j)
+            j = i + 1;
+        }
+        k = 0
+    }
+    return s.substring(i)
+};
+
 // X
