@@ -1,5 +1,6 @@
 
 
+// no .substring method solution
 
 // Runtime: 84 ms, faster than 49.06% of JavaScript online submissions for Implement strStr().
 // Memory Usage: 39.4 MB, less than 42.54% of JavaScript online submissions for Implement strStr().
