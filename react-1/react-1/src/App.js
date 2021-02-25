@@ -48,7 +48,7 @@ class App extends Component {
     // to add hover (which is not a css selector but rather a pseudo selector), we can use a package
 
     let persons = null;
-    let btnClass = [classes.Button];
+    let btnClass = '';
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -64,7 +64,7 @@ class App extends Component {
         </div> 
       );
       
-      btnClass.push(classes.Red);
+      btnClass = classes.Red;
 
       // style.backgroundColor = 'red';
       // // able to use :hover with radium
@@ -92,7 +92,7 @@ class App extends Component {
         <button 
           // style={style}
           // alt={this.state.showPersons}
-          className={btnClass.join(' ')}
+          className={btnClass}
           onClick={this.togglePersonsHandler}>Switch</button>
         { persons }
       </div>
