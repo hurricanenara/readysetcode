@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 
@@ -44,21 +44,11 @@ class App extends Component {
 
   // bind function preferred
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px, solid pink',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-      }
-    };
+
     // to add hover (which is not a css selector but rather a pseudo selector), we can use a package
 
     let persons = null;
+    let btnClass = [classes.Button];
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -73,33 +63,36 @@ class App extends Component {
           }))}
         </div> 
       );
-      style.backgroundColor = 'red';
-      // able to use :hover with radium
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      
+      btnClass.push(classes.Red);
+
+      // style.backgroundColor = 'red';
+      // // able to use :hover with radium
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
     }
 
     // dynamically add classes
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
 
     return (
       // to have access to @media queries, you must import StyleRoot and wrap
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi!</h1>
-        <p className={classes.join(' ')}>Mic test</p>
+        <p className={assignedClasses.join(' ')}>Mic test</p>
         <button 
           // style={style}
           // alt={this.state.showPersons}
-          className="button"
+          className={btnClass.join(' ')}
           onClick={this.togglePersonsHandler}>Switch</button>
         { persons }
       </div>
