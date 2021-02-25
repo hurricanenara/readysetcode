@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import './App.css';
+import styled from 'styled-components';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -44,12 +45,18 @@ class App extends Component {
   // bind function preferred
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px, solid pink',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black',
+      }
     };
+    // to add hover (which is not a css selector but rather a pseudo selector), we can use a package
 
     let persons = null;
     if (this.state.showPersons) {
@@ -66,11 +73,29 @@ class App extends Component {
           }))}
         </div> 
       );
+      style.backgroundColor = 'red';
+      // able to use :hover with radium
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
 
+    // dynamically add classes
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
+
     return (
+      // to have access to @media queries, you must import StyleRoot and wrap
       <div className="App">
         <h1>Hi!</h1>
+        <p className={classes.join(' ')}>Mic test</p>
         <button 
           style={style}
           onClick={this.togglePersonsHandler}>Switch</button>
@@ -79,7 +104,7 @@ class App extends Component {
     );
   }
 }
-
+// wrap App with Radium function
 export default App;
 
 
