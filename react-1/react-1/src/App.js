@@ -3,6 +3,20 @@ import './App.css';
 import styled from 'styled-components';
 import Person from './Person/Person';
 
+const StyledButton = styled.button`
+  background-color: ${props => props.alt ? 'red' : 'green'};
+  color: white;
+  font: inherit;
+  border: 1px; solid pink;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+    color: black;
+  }
+`;
+
 class App extends Component {
   state = {
     persons:[
@@ -96,9 +110,10 @@ class App extends Component {
       <div className="App">
         <h1>Hi!</h1>
         <p className={classes.join(' ')}>Mic test</p>
-        <button 
-          style={style}
-          onClick={this.togglePersonsHandler}>Switch</button>
+        <StyledButton 
+          // style={style}
+          alt={this.state.showPersons}
+          onClick={this.togglePersonsHandler}>Switch</StyledButton>
         { persons }
       </div>
     );
