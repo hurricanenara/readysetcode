@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Person from '../components/Persons/Person/Person';
+import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 // to use CSS modules, you can change your css file name from example.css to example.module.css instead of ejecting
 
 
@@ -46,9 +46,7 @@ class App extends Component {
 
   // bind function preferred
   render() {
-
     // to add hover (which is not a css selector but rather a pseudo selector), we can use a package
-
     let persons = null;
     let btnClass = '';
     if (this.state.showPersons) {
