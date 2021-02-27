@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Person.css';
 
 // no need to pass props and make into a functional component as styled.div already returns a react Component
@@ -16,19 +16,22 @@ import classes from './Person.css';
 // `;
 
 // when using value in input, onChange must be present
-const person = (props) => {
-    // const rnd = Math.random();
-    // if (rnd > 0.7) {
-    //     throw new Error('something went wrong');
-    // }
-    return (
-        // <div className="Person" style={style}>
-        <div className={classes.Person}>
-            <p onClick={props.click}>I'm {props.name} and I am {props.age} years old!</p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name} />
-        </div>
-    )
+class Person extends Component {
+    render() {
+        // const rnd = Math.random();
+        // if (rnd > 0.7) {
+        //     throw new Error('something went wrong');
+        console.log('[Person.js] rendering...');
+        // }
+        return (
+            // <div className="Person" style={style}>
+            <div className={classes.Person}>
+                <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
+                <p>{this.props.children}</p>
+                <input type="text" onChange={this.props.changed} value={this.props.name} />
+            </div>
+        )
+    }
 }
 
-export default person;
+export default Person;

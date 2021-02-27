@@ -1,20 +1,57 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
 // to use CSS modules, you can change your css file name from example.css to example.module.css instead of ejecting
-
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-  state = {
-    persons:[
-      { id: "abc1", name: "Nara", age: 30 },
-      { id: "abc2", name: "Paul", age: 3 },
-      { id: "abc3", name: "Michelle", age: 20 },
-    ],
-    otherState: 'other value',
-    showPersons: false
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor')
+    this.state = {
+      persons:[
+        { id: "abc1", name: "Nara", age: 30 },
+        { id: "abc2", name: "Paul", age: 3 },
+        { id: "abc3", name: "Michelle", age: 20 },
+      ],
+      otherState: 'other value',
+      showPersons: false
+    }
+    
   }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  // componentWillMount() {
+  //   console.log('[App.js cwm]')
+  // }
+
+  componentDidMount() {
+    console.log('[App.js cdm]');
+  }
+
+  shouldComponentUpdate(nextProps, nextStaet) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDiduppdate');
+  }
+
+  // more modern JS syntax
+  // state = {
+  //   persons:[
+  //     { id: "abc1", name: "Nara", age: 30 },
+  //     { id: "abc2", name: "Paul", age: 3 },
+  //     { id: "abc3", name: "Michelle", age: 20 },
+  //   ],
+  //   otherState: 'other value',
+  //   showPersons: false
+  // }
 
   deletePersonHandler = (personIndex) => {
     // update state in immutable fashion
@@ -46,26 +83,20 @@ class App extends Component {
 
   // bind function preferred
   render() {
+    console.log('[App.js] render');
     // to add hover (which is not a css selector but rather a pseudo selector), we can use a package
     let persons = null;
-    let btnClass = '';
+    
     if (this.state.showPersons) {
       persons = (
-        <div>
-          {this.state.persons.map(((person, index) => {
-            return <ErrorBoundary key={person.id}>
-              <Person
-                name={person.name} 
-                age={person.age} 
-                changed={(event) => this.nameChangedHandler(event, person.id)}
-                // click={this.deletePersonHandler.bind(this, index)}
-                click={() => this.deletePersonHandler(index)} />
-              </ErrorBoundary>
-          }))}
-        </div> 
+          <Persons 
+            persons ={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}
+            />
       );
       
-      btnClass = classes.Red;
+      
 
       // style.backgroundColor = 'red';
       // // able to use :hover with radium
@@ -75,26 +106,17 @@ class App extends Component {
       // }
     }
 
-    // dynamically add classes
-    const assignedClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
-    }
 
 
     return (
       // to have access to @media queries, you must import StyleRoot and wrap
       <div className={classes.App}>
-        <h1>Hi!</h1>
-        <p className={assignedClasses.join(' ')}>Mic test</p>
-        <button 
-          // style={style}
-          // alt={this.state.showPersons}
-          className={btnClass}
-          onClick={this.togglePersonsHandler}>Switch</button>
+        <Cockpit 
+          title={this.props.componentTitle}
+          showPersons={this.state.showPersons}
+          persons={this.state.persons}
+          clicked={this.togglePersonsHandler}
+        />
         { persons }
       </div>
     );
