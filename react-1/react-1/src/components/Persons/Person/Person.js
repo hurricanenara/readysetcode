@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Person.css';
 import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/withClass';
 
 // no need to pass props and make into a functional component as styled.div already returns a react Component
 // const StyledDiv = styled.div`
@@ -38,4 +39,4 @@ class Person extends Component {
     }
 }
 
-export default Person;
+export default withClass(Person, classes.Person);

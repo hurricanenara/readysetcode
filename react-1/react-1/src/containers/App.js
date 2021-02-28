@@ -113,7 +113,7 @@ class App extends Component {
 
     return (
       // to have access to @media queries, you must import StyleRoot and wrap
-      <Aux classes={classes.App}>
+      <Aux>
         <button onClick={() => {this.setState({ showCockpit: false })}}>Remove Cockpit</button>
         {
           this.state.showCockpit ? <Cockpit 
