@@ -3,6 +3,8 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 // to use CSS modules, you can change your css file name from example.css to example.module.css instead of ejecting
 import Cockpit from '../components/Cockpit/Cockpit';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 
 class App extends Component {
   constructor(props) {
@@ -111,7 +113,7 @@ class App extends Component {
 
     return (
       // to have access to @media queries, you must import StyleRoot and wrap
-      <div className={classes.App}>
+      <Aux classes={classes.App}>
         <button onClick={() => {this.setState({ showCockpit: false })}}>Remove Cockpit</button>
         {
           this.state.showCockpit ? <Cockpit 
@@ -124,12 +126,12 @@ class App extends Component {
         }
 
         { persons }
-      </div>
+      </Aux>
     );
   }
 }
 // wrap App with Radium function
-export default App;
+export default withClass(App, classes.App);
 
 
 // const app = props => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Person.css';
+import Aux from '../../../hoc/Aux';
 
 // no need to pass props and make into a functional component as styled.div already returns a react Component
 // const StyledDiv = styled.div`
@@ -23,13 +24,16 @@ class Person extends Component {
         //     throw new Error('something went wrong');
         console.log('[Person.js] rendering...');
         // }
+        // you can structure the return jsx to be an array with each element being the html tag, but with key specified
         return (
-            // <div className="Person" style={style}>
-            <div className={classes.Person}>
-                <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
-                <p>{this.props.children}</p>
-                <input type="text" onChange={this.props.changed} value={this.props.name} />
-            </div>
+                // <div className="Person" style={style}>
+            <Aux>
+                {/* <div className={classes.Person}> */}
+                    <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
+                    <p>{this.props.children}</p>
+                    <input type="text" onChange={this.props.changed} value={this.props.name} />
+                {/* </div> */}
+            </Aux>
         )
     }
 }
