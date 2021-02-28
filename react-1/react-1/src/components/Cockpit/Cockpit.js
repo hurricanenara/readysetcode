@@ -1,7 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css'
 
 const cockpit = (props) => {
+
+  // creating refs in functional components
+  const toggleBtnRef = useRef(null);
+  // cannot call it this way as render has not happened yet so use useEffect
+  // toggleBtnRef.current.click();
 
   // runs when component is created and every time app.js is updated
   // cdm and cdu in one function
@@ -20,8 +25,10 @@ const cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     setTimeout(() => {
-      alert('Saved data to cloud');
+      // alert('Saved data to cloud');
+      toggleBtnRef.current.click();
     }, 1000);
+    // toggleBtnRef.current.click();
     // cleanup (it runs BEFORE the main useEffect, but AFTER the first render cycle)
     return () => {
       console.log('[Cockpit.js] cleanup work in useEffect');
@@ -54,6 +61,7 @@ const cockpit = (props) => {
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>Mic test</p>
             <button 
+              ref={toggleBtnRef}
               // style={style}
               // alt={this.state.showPersons}
               className={btnClass}

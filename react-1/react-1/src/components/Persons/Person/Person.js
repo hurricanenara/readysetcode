@@ -21,10 +21,16 @@ import PropTypes from 'prop-types';
 // when using value in input, onChange must be present
 class Person extends Component {
 
+    constructor() {
+        super();
+        this.inputElementRef = React.createRef();  // newer version to create reference
+    }
+
     // what to do if you want to focus the last input element (create anonymous function in the input tag below like so)
     // this approach only works in class components
     componentDidMount() {
-        this.inputElement.focus();
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
     }
 
     render() {
@@ -40,7 +46,8 @@ class Person extends Component {
                 {/* <div className={classes.Person}> */}
                     <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                     <p>{this.props.children}</p>
-                    <input type="text" onChange={this.props.changed} value={this.props.name} ref={(inputEl) => {this.inputElement = inputEl}} />
+                    {/* <input type="text" onChange={this.props.changed} value={this.props.name} ref={(inputEl) => {this.inputElement = inputEl}} */}
+                    <input type="text" onChange={this.props.changed} value={this.props.name} ref={this.inputElementRef} />
                 {/* </div> */}
             </Aux>
         )
