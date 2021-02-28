@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './Person.css';
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/withClass';
+import PropTypes from 'prop-types';
 
 // no need to pass props and make into a functional component as styled.div already returns a react Component
 // const StyledDiv = styled.div`
@@ -38,5 +39,12 @@ class Person extends Component {
         )
     }
 }
+
+Person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
+};
 
 export default withClass(Person, classes.Person);
