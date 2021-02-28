@@ -22,7 +22,19 @@ const cockpit = (props) => {
     setTimeout(() => {
       alert('Saved data to cloud');
     }, 1000);
+    // cleanup (it runs BEFORE the main useEffect, but AFTER the first render cycle)
+    return () => {
+      console.log('[Cockpit.js] cleanup work in useEffect');
+    }
   }, []);
+
+  // runs every cycle without second [] argument
+  useEffect(() => {
+    console.log('[Cockpit.js] 2nd useEffect')
+    return () => {
+      console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+    }
+  });
   
     // dynamically add classes
     const assignedClasses = [];
