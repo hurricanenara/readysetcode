@@ -27,11 +27,15 @@ class Person extends Component {
         this.inputElementRef = React.createRef();  // newer version to create reference
     }
 
+    // has to be static and has to be contextType
+    static contextType = AuthContext;
+
     // what to do if you want to focus the last input element (create anonymous function in the input tag below like so)
     // this approach only works in class components
     componentDidMount() {
         // this.inputElement.focus();
         this.inputElementRef.current.focus();
+        console.log(this.context.authenticated);
     }
 
     render() {
@@ -44,9 +48,7 @@ class Person extends Component {
         return (
                 // <div className="Person" style={style}>
             <Aux>
-                <AuthContext.Consumer>
-                    {(context) => context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>}
-                </AuthContext.Consumer>{}
+                    {this.context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>}
                 {/* <div className={classes.Person}> */}
                     <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                     <p>{this.props.children}</p>
