@@ -38,7 +38,7 @@ class BurgerBuilder extends Component {
             .reduce((sum, el) => {
                 return sum + el;
             }, 0);
-        this.setState({ purchasable: sum > 0 }, () => console.log(sum, this.state));
+        this.setState({ purchasable: sum > 0 });
     }
 
     addIngredientHandler = (type) => {
@@ -94,6 +94,7 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+                    {/* {No need to rerender order summary when modal is hidden - performance check} */}
                     <OrderSummary
                      ingredients={this.state.ingredients}
                      price={this.state.totalPrice}
