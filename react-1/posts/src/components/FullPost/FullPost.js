@@ -16,7 +16,8 @@ class FullPost extends Component {
                     .then(res => {
                         // creates infinite loop
                         this.setState({ loadedPost: res.data });
-                    });
+                    })
+                    .catch(err => {})
             }
         }
     }
