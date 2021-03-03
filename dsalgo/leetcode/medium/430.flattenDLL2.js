@@ -1,0 +1,5 @@
+
+
+var flatten = function(head) {
+    
+};
