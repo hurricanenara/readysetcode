@@ -9,7 +9,7 @@ var decodeString = function(s) {
     for (const char of s) {
         if (char !== "]") {
             stack.push(char);
-            continue;
+            continue; // skips everyhing below
         }
         let cur = stack.pop();
         let str = "";
@@ -34,5 +34,20 @@ console.log(decodeString("3[a2[c]]")); // "accaccacc"
 console.log(decodeString("2[abc]3[cd]ef")); // "abcabccdcdcdef"
 console.log(decodeString("abc3[cd]xyz")); // "abccdcdcdxyz"
 
+// another way without using stack
 
+var decodeString = function(s) {
+    while(s.indexOf('[')!=-1) { // base case, breaks when there's no bracket found
+        let left = s.lastIndexOf('['); // left position of the inner-most `[`
+        let right = left + s.substring(left).indexOf(']'); // right positio of the inner-most `]`
+        let word = s.substring(left+1, right); // between them is the string
+        let count = "";
+        while(!isNaN(s[left - 1])) { // try to find a valid number
+            left--;
+            count = s[left] + count;
+        }
+        s = s.substring(0,left) + word.repeat(count) + s.substring(right+1); // put them all togher and repeat :)
+    }
+    return s;
+};
 

@@ -17,24 +17,24 @@ def isAlienSorted(words, order):
     return True
     
 #similar solution
-def isAlienSorted(words, order):
-    """
-    :type words: List[str]
-    :type order: str
-    :rtype: bool
-    """
-    order = {c: i for i, c in enumerate(order)}
+# def isAlienSorted(words, order):
+#     """
+#     :type words: List[str]
+#     :type order: str
+#     :rtype: bool
+#     """
+#     order = {c: i for i, c in enumerate(order)}
 
-    for w1, w2 in zip(words, words[1:]):
-        for c1, c2 in zip(w1, w2):
-            if c1 != c2:
-                if order[c1] > order[c2]:
-                    return False
-                break
-        else:
-            if len(w2) < len(w1):
-                return False
+#     for w1, w2 in zip(words, words[1:]):
+#         for c1, c2 in zip(w1, w2):
+#             if c1 != c2:
+#                 if order[c1] > order[c2]:
+#                     return False
+#                 break
+#         else:
+#             if len(w2) < len(w1):
+#                 return False
 
-    return True
+#     return True
 
 print(isAlienSorted(["my", "f"], "gelyriwxzdupkjctbfnqmsavho"))
