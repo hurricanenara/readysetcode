@@ -21,6 +21,31 @@
 
 // };
 
+
+//refactored original (line 50) for my understanding
+var allPathsSourceTarget = function(graph) {
+    const target = graph.length - 1;
+
+    const paths = [];
+
+    const dfs = (node, path) => {
+        path.push(node);
+
+        // if we've reached the target, we've found a path
+
+        if (node === target) {
+            paths.push(path);
+        } else {
+            for (let edge of graph[node]) {
+                dfs(edge, [...path]); // pass in copy of path;
+            }
+        }
+    }
+    dfs(0, []);
+    return paths;
+};
+
+// original
 var allPathsSourceTarget = function(graph) {
     const target = graph.length - 1;
 
@@ -44,8 +69,8 @@ var allPathsSourceTarget = function(graph) {
     return paths;
 };
 
-console.log(allPathsSourceTarget([[1,2],[3],[3],[]]));
-// console.log(allPathsSourceTarget([[4,3,1],[3,2,4],[3],[4],[]]));
+// console.log(allPathsSourceTarget([[1,2],[3],[3],[]]));
+console.log(allPathsSourceTarget([[4,3,1],[3,2,4],[3],[4],[]]));
 // console.log(allPathsSourceTarget([[1],[]]));
 // console.log(allPathsSourceTarget([[1,2,3],[2],[3],[]]));
 // console.log(allPathsSourceTarget([[1,3],[2],[3],[]]));
