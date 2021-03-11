@@ -22,6 +22,45 @@ const lengthOfLongestSubstring = s => {
     return longest;
 }
 
+var lengthOfLongestSubstring = function(s) {    
+    let low=0, max = 0
+    let set = new Set()
+    
+    for(let hi=0; hi<s.length; hi++) {
+      
+       while(set.has(s[hi])) {
+           set.delete(s[low])
+           low++
+        }
+
+        
+        set.add(s[hi])
+        max = Math.max(max, set.size)
+    }
+
+    return max
+};
+
+// without set, what I was trying to do
+var lengthOfLongestSubstring = function(s) {
+    var length = s.length;
+    if (length <= 1) {
+        return length;
+    }
+    var p = 0;
+    var q = 1;
+    var result = 1;
+    while (q < length) {
+        var sub = s.slice(p, q);
+        var i = sub.indexOf(s[q]);
+        if (i !== -1) {
+            p = p + i + 1;
+        }
+        q++;
+        result = q - p > result ? q - p : result;
+    }
+    return result;
+}
 
 //first attempt - infinite loop
 
