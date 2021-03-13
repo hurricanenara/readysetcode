@@ -38,10 +38,7 @@ slots2[i][0] < slots2[i][1]
 // 2. [start1, end1] and [start2, end2] of the same person, either start1 > end2 or start2 > end1
 // could be unsorted
 
-// Input: 
-// slots1 = [[10,50],[60,120],[140,210]], 
-// slots2 = [[0,15],[60,70]], duration = 8
-// Output: [60,68]
+
 
 /**
  * @param {number[][]} slots1
@@ -53,19 +50,22 @@ var minAvailableDuration = function (slots1, slots2, duration) {
     slots1.sort((a, b) => a[0] - b[0]);
     slots2.sort((a, b) => a[0] - b[0]);
 
-    // for (let i = 0; i < Math.max(slots1.length, slots2.length); i++) {
-    // }
     let i = 0;
     let j = 0;
 
     while (i < slots1.length && j < slots2.length) {
-        const maxStartTime = Math.max(slots1[i][0], slots2[j][0]);
-        const minEndTime = Math.min(slots1[i][1], slots2[j][1]);
+        const firstStart = slots1[i][0];
+        const firstEnd = slots1[i][1];
+        const secondStart = slots2[j][0];
+        const secondEnd = slots2[j][1];
+
+        const maxStartTime = Math.max(firstStart, secondStart);
+        const minEndTime = Math.min(firstEnd, secondEnd);
 
         if (maxStartTime + duration <= minEndTime) {
             return [maxStartTime, maxStartTime + duration];
         }
-        if (slots1[i][1] <= slots2[j][1]) {
+        if (firstEnd < secondEnd  ) {
             i++;
         } else {
             j++;
@@ -74,5 +74,10 @@ var minAvailableDuration = function (slots1, slots2, duration) {
     return [];
 };
 
-// console.log(minAvailableDuration)
+// Input: 
+// slots1 = [[10,50],[60,120],[140,210]], 
+// slots2 = [[0,15],[60,70]], duration = 8
+// Output: [60,68]
+
+console.log(minAvailableDuration([[10,50],[60,120],[140,210]], [[0,15],[60,70]], 8));
 
