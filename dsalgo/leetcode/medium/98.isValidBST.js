@@ -1,4 +1,7 @@
+// https://leetcode.com/problems/validate-binary-search-tree/
 
+// Runtime: 84 ms, faster than 91.09% of JavaScript online submissions for Validate Binary Search Tree.
+// Memory Usage: 42.9 MB, less than 39.11% of JavaScript online submissions for Validate Binary Search Tree.
 
 
 // recursive solution I like
