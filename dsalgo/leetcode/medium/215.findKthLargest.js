@@ -6,6 +6,11 @@ var findKthLargest = function(nums, k) {
     return quickSort(nums)[k - 1];
 };
 
+// Unacceptably slow!
+// Runtime: 1312 ms, faster than 5.14% of JavaScript online submissions for Kth Largest Element in an Array.
+// Memory Usage: 183.2 MB, less than 5.10% of JavaScript online submissions for Kth Largest Element in an Array.
+
+
 var quickSort = arr => {
     if (arr.length === 0 || arr.length === 1) return arr;
     const pivot = arr[0];
@@ -40,6 +45,11 @@ at the end, the largest k number of elements will be left in the heap
 the smallest of them being at the top of the heap, which is the kth largest number
 The time complexity for this solution is O(N logK). Which is better than sorting the entire array which takes order of O(N logN). K is often smaller than N.
  */
+
+// so much faster than quicksort
+// Runtime: 100 ms, faster than 39.44% of JavaScript online submissions for Kth Largest Element in an Array.
+// Memory Usage: 41.1 MB, less than 22.89% of JavaScript online submissions for Kth Largest Element in an Array.
+
 var findKthLargest = function(nums, k) {
     
     // ============ Min Heap Class
@@ -149,4 +159,47 @@ class MaxHeap {
   swap(i, j) {
     [this.value[i], this.value[j]] = [this.value[j], this.value[i]];
   }
+}
+
+//using quick select
+// Runtime: 104 ms, faster than 34.18% of JavaScript online submissions for Kth Largest Element in an Array.
+// Memory Usage: 40.8 MB, less than 25.82% of JavaScript online submissions for Kth Largest Element in an Array.
+var findKthLargest = function(nums, k) {
+    return quickSelect(nums, 0, nums.length - 1, k);
+};
+
+function quickSelect(arr, start, end, k) {
+    const pivotIndex = partition(arr, start, end);
+
+    if (k < arr.length - pivotIndex) {
+        return quickSelect(arr, pivotIndex + 1, end, k);
+    } else if (k > arr.length - pivotIndex) {
+        return quickSelect(arr, start, pivotIndex - 1, k);
+    }
+    return arr[pivotIndex];
+};
+
+function partition(arr, start, end) {
+    const pivot = arr[end];
+    let i = start;
+    let j = end - 1;
+    while(i <= j) {    
+        while (arr[i] < pivot) {
+            i += 1;
+        } 
+        while (arr[j] > pivot) {
+            j -= 1;
+        }
+        if(i <= j) {
+            swap(arr, i, j);
+            i += 1;
+            j -= 1;
+        }   
+    }
+    swap(arr, i, end);
+    return i;
+}
+
+function swap(arr, i, j) {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
 }
