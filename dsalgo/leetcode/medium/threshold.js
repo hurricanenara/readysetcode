@@ -28,19 +28,19 @@
 // Memory Usage: 40.6 MB, less than 67.24% of JavaScript online submissions for Sum of Mutated Array Closest to Target.
 
 // Closest to Target
-var findBestValue = function(nums, t) {
-    nums.sort((a, b) => a - b);
-    
-    let runningSum = 0;
-    for (let i = 0; i < nums.length; i++) {
-        const remaining = nums.length - i;
-        if (runningSum + nums[i] * remaining > t) {
-            return Math.ceil((t - runningSum) / remaining - 0.5);
+var findBestValue = function(arr, target) {
+    arr.sort((a, b) => a - b);
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        const lengthOfNumsToRight = arr.length - i;
+        const currentNum = arr[i];
+        if (sum + (currentNum * lengthOfNumsToRight) > target) {
+            return Math.ceil((target - sum) / lengthOfNumsToRight - 0.5);
         }
-        runningSum += nums[i];
+        sum += currentNum;
     }
 
-    return nums[nums.length - 1];
+    return arr[arr.length - 1];
 };
 console.log(threshold([1, 2, 5], 6));
 console.log(threshold([40, 20, 10, 30], 70));
