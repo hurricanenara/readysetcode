@@ -7,21 +7,23 @@ const twoSumAllPairs = (arr, target) => {
     const pairs = [];
 
     for (let i = 0; i < arr.length; i ++) {
-        let temp = target - arr[i];
-
-        if (temp in dict) {
-            let count = dict[temp];
-            for (let j = 0; j < count; j++) {
-                pairs.push([temp, arr[i]]);
-                pairs.push([arr[i], temp]);
-            }
-        }
+        let complement = target - arr[i];
 
         if (arr[i] in dict) {
             dict[arr[i]] += 1;
         } else {
             dict[arr[i]] = 1;
         }
+
+        if (complement in dict) {
+            let count = dict[complement];
+            for (let j = 0; j < count; j++) {
+                pairs.push([complement, arr[i]]);
+                pairs.push([arr[i], complement]);
+            }
+        }
+
+
     }
     return pairs;
 }
