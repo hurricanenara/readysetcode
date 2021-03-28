@@ -13,7 +13,8 @@ func main() {
 	fmt.Println(earthsGravity)
 
 	// this will throw error
-	var jellybeanCounter int8
+	var jellybeanCounter int8 = 100
+	fmt.Println(jellybeanCounter)
 }
 
 // useful commands go doc fmt.FUNCTION go doc time.Now etc
