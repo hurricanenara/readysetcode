@@ -1,4 +1,10 @@
 function removeIslands(matrix) {
+  function traverse(i, j) {
+    if (i < 0 || i > matrix.length || j < 0 || j > matrix[0].length) return;
+    if (matrix[i][j] === 1) {
+    }
+  }
+
   // check top row
   for (let c = 0; c < matrix[0].length; c++) {
     matrix[0][c];
