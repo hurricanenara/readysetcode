@@ -1,5 +1,5 @@
-import express from "express";
-import expressGraphQL from "express-graphql";
+const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
 
 const app = express();
 
@@ -7,7 +7,7 @@ const PORT = 4000;
 
 app.use(
   "/graphql",
-  expressGraphQL({
+  graphqlHTTP({
     graphiql: true,
   })
 );
