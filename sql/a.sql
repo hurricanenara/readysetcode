@@ -1,0 +1,28 @@
+-- Graph - Week 1
+-- household_id individual_id device_id device_type
+--    123             abc      device1    Mobile
+--    123             abc      device2    Desktop
+--    123             efg      device3    Mobile
+--    123             xyz      device4    TV
+--    456             dgh      device5    Mobile
+--    456             dgh      device6    Mobile
+--    789             mno      device7    Desktop
+-- Graph - Week 2
+-- household_id individual_id device_id device_type
+--    123             abc      device1    Mobile
+--    123             abc      device2    Desktop
+--    123             efg      device3    Mobile
+--    789             xyz      device4    TV
+--    456             dgh      device5    Mobile
+--    456             dgh      device6    Mobile
+--    555             jkl      device8    Desktop
+-- ● JOINS (LEFT, RIGHT, INNER, FULL OUTER)
+-- ● COUNT
+-- ● SUM
+-- ● DISTINCT
+-- ● IF
+-- ● GROUP BY
+-- ● CASE
+-- ● UNNEST - Arrays
+-- how many households are there?
+-- how many device typs are there?
